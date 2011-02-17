@@ -7,22 +7,26 @@
 //
 
 #import "WiGiAppDelegate.h"
+#import "WiGiMainViewController.h"
 
 @implementation WiGiAppDelegate
 
 @synthesize window;
-
+@synthesize wigiMainViewController;
 
 #pragma mark -
 #pragma mark Application lifecycle
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
-    
+    NSLog(@" in didFinishLaunchWithOptions with options: %@", launchOptions);
     // Override point for customization after application launch.
-    
-    [self.window makeKeyAndVisible];
-    
-    return YES;
+	self.wigiMainViewController = [[WiGiMainViewController alloc] init];
+	self.wigiMainViewController.view.frame = CGRectMake(0, 20, 320, 460);
+	[self.window addSubview:self.wigiMainViewController.view];
+	[self.window makeKeyAndVisible];
+	
+	return YES;
+	
 }
 
 
@@ -74,8 +78,15 @@
 }
 
 
+//Function needed for facebook
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+	return [[self.wigiMainViewController myFacebook] handleOpenURL:url];
+}
+
+
 - (void)dealloc {
-    [window release];
+    [self.window release];
+	[self.wigiMainViewController release];
     [super dealloc];
 }
 

@@ -1,10 +1,18 @@
 // !$*UTF8*$!
 {
+	1D3623240D0F684500981E51 /* WiGiAppDelegate.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {910, 418}}";
+			sepNavSelRange = "{441, 0}";
+			sepNavVisRange = "{0, 535}";
+			sepNavWindowFrame = "{{107, 131}, {750, 558}}";
+		};
+	};
 	1D3623250D0F684500981E51 /* WiGiAppDelegate.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1965, 1105}}";
-			sepNavSelRange = "{0, 0}";
-			sepNavVisRange = "{0, 1040}";
+			sepNavIntBoundsRect = "{{0, 0}, {1965, 1222}}";
+			sepNavSelRange = "{2915, 0}";
+			sepNavVisRange = "{2308, 748}";
 			sepNavWindowFrame = "{{61, 173}, {750, 558}}";
 		};
 	};
@@ -18,6 +26,9 @@
 		activeBuildConfigurationName = Debug;
 		activeExecutable = C007D878130C543600A2965A /* WiGi */;
 		activeTarget = 1D6058900D05DD3D006BFB54 /* WiGi */;
+		addToTargets = (
+			1D6058900D05DD3D006BFB54 /* WiGi */,
+		);
 		codeSenseManager = C007D884130C544F00A2965A /* Code sense */;
 		executables = (
 			C007D878130C543600A2965A /* WiGi */,
@@ -28,9 +39,9 @@
 				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
 				PBXFileTableDataSourceColumnWidthsKey = (
 					20,
-					341,
+					732,
 					20,
-					48.16259765625,
+					48,
 					43,
 					43,
 					20,
@@ -45,11 +56,72 @@
 					PBXFileDataSource_Target_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 319575094;
-			PBXWorkspaceStateSaveDate = 319575094;
+			PBXPerProjectTemplateStateSaveDate = 319595160;
+			PBXWorkspaceStateSaveDate = 319595160;
+		};
+		perUserProjectItems = {
+			C007D8A9130C57D100A2965A = C007D8A9130C57D100A2965A /* PBXTextBookmark */;
+			C007D8B3130C5B5900A2965A = C007D8B3130C5B5900A2965A /* PBXTextBookmark */;
+			C007D8B8130C5C6700A2965A = C007D8B8130C5C6700A2965A /* PBXTextBookmark */;
+			C007D95B130DA29800A2965A /* PBXTextBookmark */ = C007D95B130DA29800A2965A /* PBXTextBookmark */;
+			C007D95C130DA29800A2965A /* PBXTextBookmark */ = C007D95C130DA29800A2965A /* PBXTextBookmark */;
+			C007D95D130DA29800A2965A /* PBXTextBookmark */ = C007D95D130DA29800A2965A /* PBXTextBookmark */;
+			C007D95E130DA29800A2965A /* PBXTextBookmark */ = C007D95E130DA29800A2965A /* PBXTextBookmark */;
+			C007D95F130DA29800A2965A /* PBXTextBookmark */ = C007D95F130DA29800A2965A /* PBXTextBookmark */;
+			C007D960130DA29800A2965A /* PBXTextBookmark */ = C007D960130DA29800A2965A /* PBXTextBookmark */;
+			C007D964130DA2B600A2965A /* XCBuildMessageTextBookmark */ = C007D964130DA2B600A2965A /* XCBuildMessageTextBookmark */;
+			C007D965130DA2B600A2965A /* PBXTextBookmark */ = C007D965130DA2B600A2965A /* PBXTextBookmark */;
+			C007D967130DA2CD00A2965A /* PBXTextBookmark */ = C007D967130DA2CD00A2965A /* PBXTextBookmark */;
+			C007D968130DA2CD00A2965A /* PBXTextBookmark */ = C007D968130DA2CD00A2965A /* PBXTextBookmark */;
+			C007D969130DA2CD00A2965A /* PBXTextBookmark */ = C007D969130DA2CD00A2965A /* PBXTextBookmark */;
+			C007D972130DA73000A2965A /* XCBuildMessageTextBookmark */ = C007D972130DA73000A2965A /* XCBuildMessageTextBookmark */;
+			C007D973130DA73000A2965A /* PBXTextBookmark */ = C007D973130DA73000A2965A /* PBXTextBookmark */;
+			C007D97C130DA87F00A2965A /* PBXTextBookmark */ = C007D97C130DA87F00A2965A /* PBXTextBookmark */;
+			C007D97D130DA87F00A2965A /* PBXTextBookmark */ = C007D97D130DA87F00A2965A /* PBXTextBookmark */;
+			C007D97E130DA87F00A2965A /* PBXTextBookmark */ = C007D97E130DA87F00A2965A /* PBXTextBookmark */;
+			C007D987130DA9AB00A2965A /* PlistBookmark */ = C007D987130DA9AB00A2965A /* PlistBookmark */;
+			C007D988130DA9AB00A2965A /* PBXTextBookmark */ = C007D988130DA9AB00A2965A /* PBXTextBookmark */;
+			C007D989130DA9AB00A2965A /* PBXTextBookmark */ = C007D989130DA9AB00A2965A /* PBXTextBookmark */;
+			C007D98A130DA9AB00A2965A /* PBXTextBookmark */ = C007D98A130DA9AB00A2965A /* PBXTextBookmark */;
+			C007D98B130DA9AB00A2965A /* PBXTextBookmark */ = C007D98B130DA9AB00A2965A /* PBXTextBookmark */;
+			C007D98C130DA9AB00A2965A /* PBXTextBookmark */ = C007D98C130DA9AB00A2965A /* PBXTextBookmark */;
+			C007D98D130DAEDF00A2965A /* PBXTextBookmark */ = C007D98D130DAEDF00A2965A /* PBXTextBookmark */;
+			C007D98E130DAEDF00A2965A /* PBXTextBookmark */ = C007D98E130DAEDF00A2965A /* PBXTextBookmark */;
+			C007D98F130DAEDF00A2965A /* PBXTextBookmark */ = C007D98F130DAEDF00A2965A /* PBXTextBookmark */;
+			C007D990130DAEDF00A2965A /* PBXTextBookmark */ = C007D990130DAEDF00A2965A /* PBXTextBookmark */;
+			C007D991130DAEDF00A2965A /* PBXTextBookmark */ = C007D991130DAEDF00A2965A /* PBXTextBookmark */;
+			C007D992130DAF7000A2965A /* PBXTextBookmark */ = C007D992130DAF7000A2965A /* PBXTextBookmark */;
+			C007D993130DB15700A2965A /* PBXTextBookmark */ = C007D993130DB15700A2965A /* PBXTextBookmark */;
+			C007D994130DB15700A2965A /* PBXTextBookmark */ = C007D994130DB15700A2965A /* PBXTextBookmark */;
+			C007D995130DB15700A2965A /* PBXTextBookmark */ = C007D995130DB15700A2965A /* PBXTextBookmark */;
+			C007D996130DB15700A2965A /* PBXTextBookmark */ = C007D996130DB15700A2965A /* PBXTextBookmark */;
+			C007D999130DB20F00A2965A /* XCBuildMessageTextBookmark */ = C007D999130DB20F00A2965A /* XCBuildMessageTextBookmark */;
+			C007D99A130DB20F00A2965A /* PBXTextBookmark */ = C007D99A130DB20F00A2965A /* PBXTextBookmark */;
+			C007D99D130DB21200A2965A /* PBXTextBookmark */ = C007D99D130DB21200A2965A /* PBXTextBookmark */;
+			C007D99E130DB21200A2965A /* PlistBookmark */ = C007D99E130DB21200A2965A /* PlistBookmark */;
+			C007D99F130DB21200A2965A /* XCBuildMessageTextBookmark */ = C007D99F130DB21200A2965A /* XCBuildMessageTextBookmark */;
+			C007D9A0130DB21200A2965A /* PBXTextBookmark */ = C007D9A0130DB21200A2965A /* PBXTextBookmark */;
+			C007D9A3130DB2AA00A2965A /* PBXTextBookmark */ = C007D9A3130DB2AA00A2965A /* PBXTextBookmark */;
+			C007D9A6130DB36100A2965A /* PBXTextBookmark */ = C007D9A6130DB36100A2965A /* PBXTextBookmark */;
+			C007D9A7130DB36100A2965A /* PBXTextBookmark */ = C007D9A7130DB36100A2965A /* PBXTextBookmark */;
+			C007D9A8130DB36100A2965A /* PBXTextBookmark */ = C007D9A8130DB36100A2965A /* PBXTextBookmark */;
 		};
 		sourceControlManager = C007D883130C544F00A2965A /* Source Control */;
 		userBuildSettings = {
+		};
+	};
+	29B97316FDCFA39411CA2CEA /* main.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {910, 418}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 356}";
+		};
+	};
+	32CA4F630368D1EE00C91783 /* WiGi_Prefix.pch */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {910, 418}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 177}";
 		};
 	};
 	C007D878130C543600A2965A /* WiGi */ = {
@@ -68,6 +140,7 @@
 		dataTipSortType = 0;
 		debuggerPlugin = GDBDebugging;
 		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
 		enableDebugStr = 1;
 		environmentEntries = (
 		);
@@ -92,5 +165,479 @@
 	C007D884130C544F00A2965A /* Code sense */ = {
 		isa = PBXCodeSenseManager;
 		indexTemplatePath = "";
+	};
+	C007D8A9130C57D100A2965A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* WiGiAppDelegate.m */;
+		name = "WiGiAppDelegate.m: 25";
+		rLen = 0;
+		rLoc = 853;
+		rType = 0;
+		vrLen = 768;
+		vrLoc = 272;
+	};
+	C007D8B3130C5B5900A2965A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623240D0F684500981E51 /* WiGiAppDelegate.h */;
+		name = "WiGiAppDelegate.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 316;
+		vrLoc = 0;
+	};
+	C007D8B8130C5C6700A2965A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623240D0F684500981E51 /* WiGiAppDelegate.h */;
+		name = "WiGiAppDelegate.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 316;
+		vrLoc = 0;
+	};
+	C007D92B130D787600A2965A /* Facebook.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {910, 1430}}";
+			sepNavSelRange = "{3015, 19}";
+			sepNavVisRange = "{2612, 608}";
+		};
+	};
+	C007D945130D7C4900A2965A /* WiGiMainViewController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {910, 418}}";
+			sepNavSelRange = "{262, 0}";
+			sepNavVisRange = "{0, 585}";
+		};
+	};
+	C007D946130D7C4900A2965A /* WiGiMainViewController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {910, 1287}}";
+			sepNavSelRange = "{2162, 0}";
+			sepNavVisRange = "{1358, 701}";
+			sepNavWindowFrame = "{{153, 89}, {750, 558}}";
+		};
+	};
+	C007D95B130DA29800A2965A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 29B97316FDCFA39411CA2CEA /* main.m */;
+		name = "main.m: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 356;
+		vrLoc = 0;
+	};
+	C007D95C130DA29800A2965A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623240D0F684500981E51 /* WiGiAppDelegate.h */;
+		name = "WiGiAppDelegate.h: 19";
+		rLen = 0;
+		rLoc = 441;
+		rType = 0;
+		vrLen = 535;
+		vrLoc = 0;
+	};
+	C007D95D130DA29800A2965A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* WiGiAppDelegate.m */;
+		name = "WiGiAppDelegate.m: 21";
+		rLen = 0;
+		rLoc = 533;
+		rType = 0;
+		vrLen = 1526;
+		vrLoc = 138;
+	};
+	C007D95E130DA29800A2965A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C007D945130D7C4900A2965A /* WiGiMainViewController.h */;
+		name = "WiGiMainViewController.h: 19";
+		rLen = 0;
+		rLoc = 491;
+		rType = 0;
+		vrLen = 482;
+		vrLoc = 0;
+	};
+	C007D95F130DA29800A2965A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C007D946130D7C4900A2965A /* WiGiMainViewController.m */;
+		name = "WiGiMainViewController.m: 17";
+		rLen = 0;
+		rLoc = 392;
+		rType = 0;
+		vrLen = 723;
+		vrLoc = 0;
+	};
+	C007D960130DA29800A2965A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C007D946130D7C4900A2965A /* WiGiMainViewController.m */;
+		name = "WiGiMainViewController.m: 18";
+		rLen = 0;
+		rLoc = 392;
+		rType = 0;
+		vrLen = 720;
+		vrLoc = 0;
+	};
+	C007D964130DA2B600A2965A /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "Method definition for '-facebookLoginButtonClick:' not found";
+		fRef = C007D946130D7C4900A2965A /* WiGiMainViewController.m */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 97;
+		rType = 1;
+	};
+	C007D965130DA2B600A2965A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C007D946130D7C4900A2965A /* WiGiMainViewController.m */;
+		name = "WiGiMainViewController.m: 72";
+		rLen = 0;
+		rLoc = 2187;
+		rType = 0;
+		vrLen = 167;
+		vrLoc = 1420;
+	};
+	C007D967130DA2CD00A2965A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C007D946130D7C4900A2965A /* WiGiMainViewController.m */;
+		name = "WiGiMainViewController.m: 54";
+		rLen = 0;
+		rLoc = 1416;
+		rType = 0;
+		vrLen = 821;
+		vrLoc = 465;
+	};
+	C007D968130DA2CD00A2965A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C007D945130D7C4900A2965A /* WiGiMainViewController.h */;
+		name = "WiGiMainViewController.h: 19";
+		rLen = 0;
+		rLoc = 491;
+		rType = 0;
+		vrLen = 482;
+		vrLoc = 0;
+	};
+	C007D969130DA2CD00A2965A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C007D945130D7C4900A2965A /* WiGiMainViewController.h */;
+		name = "WiGiMainViewController.h: 19";
+		rLen = 0;
+		rLoc = 491;
+		rType = 0;
+		vrLen = 482;
+		vrLoc = 0;
+	};
+	C007D972130DA73000A2965A /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "No declaration of property 'loginLabel' found in the interface";
+		fRef = C007D946130D7C4900A2965A /* WiGiMainViewController.m */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 16;
+		rType = 1;
+	};
+	C007D973130DA73000A2965A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C007D946130D7C4900A2965A /* WiGiMainViewController.m */;
+		name = "WiGiMainViewController.m: 18";
+		rLen = 0;
+		rLoc = 328;
+		rType = 0;
+		vrLen = 399;
+		vrLoc = 199;
+	};
+	C007D97C130DA87F00A2965A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C007D945130D7C4900A2965A /* WiGiMainViewController.h */;
+		name = "WiGiMainViewController.h: 20";
+		rLen = 10;
+		rLoc = 446;
+		rType = 0;
+		vrLen = 566;
+		vrLoc = 0;
+	};
+	C007D97D130DA87F00A2965A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C007D946130D7C4900A2965A /* WiGiMainViewController.m */;
+		name = "WiGiMainViewController.m: 11";
+		rLen = 0;
+		rLoc = 198;
+		rType = 0;
+		vrLen = 878;
+		vrLoc = 181;
+	};
+	C007D97E130DA87F00A2965A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C007D946130D7C4900A2965A /* WiGiMainViewController.m */;
+		name = "WiGiMainViewController.m: 41";
+		rLen = 0;
+		rLoc = 935;
+		rType = 0;
+		vrLen = 861;
+		vrLoc = 199;
+	};
+	C007D987130DA9AB00A2965A /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 8D1107310486CEB800E47090 /* WiGi-Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		name = "/Users/vikashdat/Documents/workspace/WiGi/iOS/WiGi-Info.plist";
+		rLen = 0;
+		rLoc = 9223372036854775807;
+	};
+	C007D988130DA9AB00A2965A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 29B97316FDCFA39411CA2CEA /* main.m */;
+		name = "main.m: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 356;
+		vrLoc = 0;
+	};
+	C007D989130DA9AB00A2965A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 32CA4F630368D1EE00C91783 /* WiGi_Prefix.pch */;
+		name = "WiGi_Prefix.pch: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 177;
+		vrLoc = 0;
+	};
+	C007D98A130DA9AB00A2965A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C007D945130D7C4900A2965A /* WiGiMainViewController.h */;
+		name = "WiGiMainViewController.h: 24";
+		rLen = 24;
+		rLoc = 543;
+		rType = 0;
+		vrLen = 566;
+		vrLoc = 0;
+	};
+	C007D98B130DA9AB00A2965A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C007D946130D7C4900A2965A /* WiGiMainViewController.m */;
+		name = "WiGiMainViewController.m: 78";
+		rLen = 0;
+		rLoc = 2089;
+		rType = 0;
+		vrLen = 803;
+		vrLoc = 1065;
+	};
+	C007D98C130DA9AB00A2965A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C007D946130D7C4900A2965A /* WiGiMainViewController.m */;
+		name = "WiGiMainViewController.m: 79";
+		rLen = 0;
+		rLoc = 2183;
+		rType = 0;
+		vrLen = 703;
+		vrLoc = 1238;
+	};
+	C007D98D130DAEDF00A2965A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623240D0F684500981E51 /* WiGiAppDelegate.h */;
+		name = "WiGiAppDelegate.h: 19";
+		rLen = 0;
+		rLoc = 441;
+		rType = 0;
+		vrLen = 535;
+		vrLoc = 0;
+	};
+	C007D98E130DAEDF00A2965A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* WiGiAppDelegate.m */;
+		name = "WiGiAppDelegate.m: 83";
+		rLen = 0;
+		rLoc = 2904;
+		rType = 0;
+		vrLen = 745;
+		vrLoc = 2309;
+	};
+	C007D98F130DAEDF00A2965A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C007D945130D7C4900A2965A /* WiGiMainViewController.h */;
+		name = "WiGiMainViewController.h: 24";
+		rLen = 24;
+		rLoc = 543;
+		rType = 0;
+		vrLen = 566;
+		vrLoc = 0;
+	};
+	C007D990130DAEDF00A2965A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C007D946130D7C4900A2965A /* WiGiMainViewController.m */;
+		name = "WiGiMainViewController.m: 79";
+		rLen = 0;
+		rLoc = 2183;
+		rType = 0;
+		vrLen = 703;
+		vrLoc = 1238;
+	};
+	C007D991130DAEDF00A2965A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C007D946130D7C4900A2965A /* WiGiMainViewController.m */;
+		name = "WiGiMainViewController.m: 79";
+		rLen = 0;
+		rLoc = 2183;
+		rType = 0;
+		vrLen = 703;
+		vrLoc = 1238;
+	};
+	C007D992130DAF7000A2965A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C007D946130D7C4900A2965A /* WiGiMainViewController.m */;
+		name = "WiGiMainViewController.m: 79";
+		rLen = 0;
+		rLoc = 1915;
+		rType = 0;
+		vrLen = 612;
+		vrLoc = 1284;
+	};
+	C007D993130DB15700A2965A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C007D92B130D787600A2965A /* Facebook.h */;
+		name = "Facebook.h: 97";
+		rLen = 19;
+		rLoc = 3015;
+		rType = 0;
+		vrLen = 608;
+		vrLoc = 2612;
+	};
+	C007D994130DB15700A2965A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C007D945130D7C4900A2965A /* WiGiMainViewController.h */;
+		name = "WiGiMainViewController.h: 12";
+		rLen = 0;
+		rLoc = 262;
+		rType = 0;
+		vrLen = 585;
+		vrLoc = 0;
+	};
+	C007D995130DB15700A2965A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C007D946130D7C4900A2965A /* WiGiMainViewController.m */;
+		name = "WiGiMainViewController.m: 88";
+		rLen = 0;
+		rLoc = 2183;
+		rType = 0;
+		vrLen = 597;
+		vrLoc = 1492;
+	};
+	C007D996130DB15700A2965A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C007D946130D7C4900A2965A /* WiGiMainViewController.m */;
+		name = "WiGiMainViewController.m: 86";
+		rLen = 0;
+		rLoc = 2055;
+		rType = 0;
+		vrLen = 521;
+		vrLoc = 1557;
+	};
+	C007D999130DB20F00A2965A /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "Expected ':' before ']' token";
+		fRef = C007D946130D7C4900A2965A /* WiGiMainViewController.m */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 94;
+		rType = 1;
+	};
+	C007D99A130DB20F00A2965A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C007D946130D7C4900A2965A /* WiGiMainViewController.m */;
+		name = "WiGiMainViewController.m: 95";
+		rLen = 23;
+		rLoc = 2161;
+		rType = 0;
+		vrLen = 181;
+		vrLoc = 2003;
+	};
+	C007D99D130DB21200A2965A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C007D945130D7C4900A2965A /* WiGiMainViewController.h */;
+		name = "WiGiMainViewController.h: 12";
+		rLen = 0;
+		rLoc = 262;
+		rType = 0;
+		vrLen = 585;
+		vrLoc = 0;
+	};
+	C007D99E130DB21200A2965A /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 8D1107310486CEB800E47090 /* WiGi-Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+			CFBundleURLTypes,
+			0,
+			CFBundleURLSchemes,
+			0,
+		);
+		name = "/Users/vikashdat/Documents/workspace/WiGi/iOS/WiGi-Info.plist";
+		rLen = 0;
+		rLoc = 9223372036854775807;
+	};
+	C007D99F130DB21200A2965A /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "Request for member 'login' in something not a structure or union";
+		fRef = C007D946130D7C4900A2965A /* WiGiMainViewController.m */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 94;
+		rType = 1;
+	};
+	C007D9A0130DB21200A2965A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C007D946130D7C4900A2965A /* WiGiMainViewController.m */;
+		name = "WiGiMainViewController.m: 95";
+		rLen = 0;
+		rLoc = 2161;
+		rType = 0;
+		vrLen = 485;
+		vrLoc = 1699;
+	};
+	C007D9A3130DB2AA00A2965A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C007D946130D7C4900A2965A /* WiGiMainViewController.m */;
+		name = "WiGiMainViewController.m: 95";
+		rLen = 0;
+		rLoc = 2162;
+		rType = 0;
+		vrLen = 493;
+		vrLoc = 1699;
+	};
+	C007D9A6130DB36100A2965A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C007D946130D7C4900A2965A /* WiGiMainViewController.m */;
+		name = "WiGiMainViewController.m: 95";
+		rLen = 0;
+		rLoc = 2162;
+		rType = 0;
+		vrLen = 701;
+		vrLoc = 1358;
+	};
+	C007D9A7130DB36100A2965A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* WiGiAppDelegate.m */;
+		name = "WiGiAppDelegate.m: 83";
+		rLen = 0;
+		rLoc = 2904;
+		rType = 0;
+		vrLen = 746;
+		vrLoc = 2308;
+	};
+	C007D9A8130DB36100A2965A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* WiGiAppDelegate.m */;
+		name = "WiGiAppDelegate.m: 83";
+		rLen = 0;
+		rLoc = 2915;
+		rType = 0;
+		vrLen = 748;
+		vrLoc = 2308;
 	};
 }
