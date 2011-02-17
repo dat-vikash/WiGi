@@ -3,6 +3,6 @@ Mobile
  -Android
    - requires facebook sdk (git clone git://github.com/facebook/facebook-android-sdk.git)
  -iOS
-   - requires facebook sdk (todo add link)
+   - requires facebook sdk (git clone git://github.com/facebook/facebook-ios-sdk.git)
 Web
  -site
