@@ -1,0 +1,13 @@
+#python noise
+*.pyc
+*.so
+*~
+site/build
+site/dist/
+site/*.egg-info
+
+#android/eclipse noise
+*.class
+android/bin/
+android/gen/
+
