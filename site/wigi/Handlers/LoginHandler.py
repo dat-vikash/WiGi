@@ -2,6 +2,11 @@ import tornado.web
 import tornado.auth
 import logging
 from wigi.Handlers.BaseHandler import BaseHandler
+from wigi.conf.config import getConfiguration
+
+#get configuration data
+site_config = getConfiguration()
+
 
 class LoginHandler(BaseHandler, tornado.auth.FacebookGraphMixin):
     @tornado.web.asynchronous
@@ -10,16 +15,16 @@ class LoginHandler(BaseHandler, tornado.auth.FacebookGraphMixin):
        	if self.get_argument("code",False):
                logging.error("got code ")
                self.get_authenticated_user(
-                                           redirect_uri='http://localhost:8888/login',
+                                           redirect_uri=site_config.get('wigi','facebook_redirect_uri'),
                                            client_id=self.settings["facebook_api_key"],
                                            client_secret=self.settings["facebook_secret"],
                                            code=self.get_argument("code"),
                                            callback=self.async_callback(self._on_login),
                                            )
                return
-        self.authorize_redirect(redirect_uri='http://localhost:8888/login',
+        self.authorize_redirect(redirect_uri=site_config.get('wigi','facebook_redirect_uri'),
                                 client_id=self.settings["facebook_api_key"],
-                                extra_params={"scope": "read_stream,offline_access",
+                                extra_params={"scope": site_config.get('wigi','facebook_permissions_scope'),
                                               "display":"popup"})	    	
 
     def _on_login(self, user):

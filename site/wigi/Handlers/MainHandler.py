@@ -6,6 +6,10 @@ import tornado.web
 import tornado.auth
 import logging
 from wigi.Handlers.BaseHandler import BaseHandler
+from wigi.conf.config import getConfiguration
+
+#get configuration data
+site_config = getConfiguration()
 
 class MainHandler(BaseHandler,tornado.auth.FacebookGraphMixin):
     
@@ -28,9 +32,9 @@ class TestHandler(BaseHandler, tornado.auth.FacebookGraphMixin):
     def _on_post(self, picture):
         if not picture:
             # Call failed; perhaps missing permission?
-            self.authorize_redirect(redirect_uri='http://localhost:8888/login',
+            self.authorize_redirect(redirect_uri=site_config.get('wigi','facebook_redirect_uri'),
                                 client_id=self.settings["facebook_api_key"],
-                                extra_params={"scope": "read_stream,offline_access",
+                                extra_params={"scope": site_config.get('wigi','facebook_permissions_scope'),
                                               "display":"popup"})
             return
         self.finish("Posted a message!")
