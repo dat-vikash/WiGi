@@ -2,13 +2,17 @@ import tornado.web
 import os
 from wigi.Handlers.MainHandler import MainHandler, TestHandler
 from wigi.Handlers.LoginHandler import LoginHandler
+from wigi.conf.config import getConfiguration 
 from tornado.options import options, define
 
-define("port", default=8888, help="run on the given port", type=int)
+#get configuration data
+site_config = getConfiguration()
+
+define("port", default=int(site_config.get('tornado_settings','tornado_server_port')), help="run on the given port", type=int)
 define("facebook_api_key", help="your Facebook application API key",
-       default="b3d747769a2c38359eebeed4e26ddec9")
+       default=site_config.get('wigi','facebook_api_key'))
 define("facebook_secret", help="your Facebook application secret",
-       default="261c90043b697e4fc948d9701064c59a")
+       default=site_config.get('wigi','facebook_secret'))
 
 class Application(tornado.web.Application):
     def __init__(self):
@@ -18,14 +22,14 @@ class Application(tornado.web.Application):
             (r"/test", TestHandler),
         ]
         settings = dict(
-                        cookie_secret="11oETzKXQAGaYdkL5gEmGeJJFuYh7EQnp2XdTP1o/Vo=",
+                        cookie_secret=site_config.get('tornado_settings','cookie_secret'),
                         login_url="/login",
                         template_path=os.path.join(os.path.dirname(__file__), "templates"),
                         static_path=os.path.join(os.path.dirname(__file__), "static"),
                         facebook_api_key=options.facebook_api_key,
                         facebook_secret=options.facebook_secret,
-                        debug=True,
-                        xsrf_cookies=True,                                
+                        debug=site_config.get('tornado_settings','debug'),
+                        xsrf_cookies=site_config.get('tornado_settings','xsrf_cookies'),                                
         )
         tornado.web.Application.__init__(self, handlers, **settings)
 
