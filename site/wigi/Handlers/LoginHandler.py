@@ -29,7 +29,8 @@ class LoginHandler(BaseHandler, tornado.auth.FacebookGraphMixin):
 
     def _on_login(self, user):
         logging.info("USER INFO:")
-        logging.info(user)
+        logging.error(user)
         self.set_secure_cookie("user", tornado.escape.json_encode(user))
-        self.write("<html><head></head> <body onunload='window.opener.location.reload();'> <script type='text/javascript'> self.close(); </script></body></html>")
-        self.finish()
+        #self.write("<html><head></head> <body onunload='window.opener.location.reload();'> <script type='text/javascript'> self.close(); </script></body></html>")
+        self.redirect("/") 
+        #self.finish()

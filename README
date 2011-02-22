@@ -6,3 +6,4 @@ Mobile
    - requires facebook sdk (git clone git://github.com/facebook/facebook-ios-sdk.git)
 Web
  -site
+   -when using virtualenv with --no-site-packages, the development packages lubcurl-4-gnutls-dev and python-dev must be installed so that a new copy of pycurl can be built inside the virtualenv. Pycurl is a Tornado dependecy.

@@ -1,9 +1,8 @@
 <html>
 <head>
 <title>Want It, Get It</title>
-
 <script type="text/javascript" src="/static/jquery-1.5.min.js"></script>          
-                                   
+<script type="text/javascript" src="http://gettopup.com/releases/latest/top_up-min.js"></script>
 </head>
 
 <body>
@@ -11,6 +10,8 @@
    Welcome {{ escape(current_user["name"]) }}.
 {% end %}
 {% if login_status == 'false' %}
+<a href="/login" class="tu_iframe_800x600">Login</a>
+
 <FORM> 
 <INPUT type="button" value="Login!" onClick="window.open('/login','mywindow','width=400,height=200')"> 
 </FORM>
