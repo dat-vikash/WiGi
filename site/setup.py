@@ -1,12 +1,12 @@
 #!/usr/bin/env python
 from setuptools import setup, find_packages
 
-
+#simplejson is needed for tornado. If running python 2.6, simplejson is already included.
 required_modules = [
 	"sqlalchemy >=0.6.1",
 	"tornado>=1.1.1",	
+	"pycurl",
 ]
-
 
 setup(
 	name="wigi",

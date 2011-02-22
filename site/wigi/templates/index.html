@@ -1,0 +1,20 @@
+<html>
+<head>
+<title>Want It, Get It</title>
+
+<script type="text/javascript" src="/static/jquery-1.5.min.js"></script>          
+                                   
+</head>
+
+<body>
+{% if login_status == 'true' %}
+   Welcome {{ escape(current_user["name"]) }}.
+{% end %}
+{% if login_status == 'false' %}
+<FORM> 
+<INPUT type="button" value="Login!" onClick="window.open('/login','mywindow','width=400,height=200')"> 
+</FORM>
+{% end %}
+</body>
+
+</html>
