@@ -39,7 +39,7 @@ static NSString* kAppId = @"195151467166916";
 - (void)viewDidLoad {
 	NSLog(@"In viewDidLoad...initializing facebook");
 	_myFacebook = [[Facebook alloc] initWithAppId:kAppId];
-	[self.loginLabel setText:@"Please Login"];
+	[self.loginLabel setText:@" Login"];
     [super viewDidLoad];
 }
 
@@ -69,6 +69,7 @@ static NSString* kAppId = @"195151467166916";
 - (void)dealloc {
 	[_myFacebook release];
 	[_loginLabel release];
+	[_facebookPicture release];
 	[_facebookLoginButton release];
     [super dealloc];
 }
@@ -83,16 +84,70 @@ static NSString* kAppId = @"195151467166916";
 /* Implemented facebook callbacks
  */
 - (void)fbDidLogin {
+	//hide login button
+	_facebookLoginButton.hidden = YES;
+	[self.myFacebook requestWithGraphPath:@"me" andDelegate:self];
+	[self.myFacebook requestWithGraphPath:@"me/picture" andDelegate:self];
 	NSLog(@"Fb login successful");
+	
 }
 
 
 /* IBACTIONS
  */
 
--(IBAction)facebookLoginButtonClick:(id) sender {
+-(IBAction)facebookLoginButtonClicked:(id) sender {
 	NSLog(@"Login button clicked");
 	[self facebookLogin];
 }
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+// FBRequestDelegate
+
+/**
+ * Called when the Facebook API request has returned a response. This callback
+ * gives you access to the raw response. It's called before
+ * (void)request:(FBRequest *)request didLoad:(id)result,
+ * which is passed the parsed response object.
+ */
+- (void)request:(FBRequest *)request didReceiveResponse:(NSURLResponse *)response {
+	NSLog(@"received response");
+};
+
+/**
+ * Called when a request returns and its response has been parsed into an object.
+ * The resulting object may be a dictionary, an array, a string, or a number, depending
+ * on the format of the API response.
+ * If you need access to the raw response, use
+ * (void)request:(FBRequest *)request didReceiveResponse:(NSURLResponse *)response.
+ */
+- (void)request:(FBRequest *)request didLoad:(id)result {
+	NSLog(@"RESULT CLASS: %@", [result class]);
+
+	if ([result isKindOfClass:[NSArray class]]) {
+		NSLog(@"is of NSArray class");
+		result = [result objectAtIndex:0];
+	}
+	if ([result isKindOfClass:[NSData class]]) {
+		NSLog(@"1");
+		UIImage *img = [[UIImage alloc] initWithData: result];
+		[_facebookPicture setImage:img];
+	}
+	if ([result isKindOfClass:[NSDictionary class]]) {
+			NSLog(@"2");
+			[self.loginLabel setText:[result objectForKey:@"name"]];
+	}
+		 NSLog(@"result: %@",result);
+		
+};
+
+/**
+ * Called when an error prevents the Facebook API request from completing successfully.
+ */
+- (void)request:(FBRequest *)request didFailWithError:(NSError *)error {
+	NSLog(@"didFailWithError: %@",[error localizedDescription]);
+};
+
 
 @end

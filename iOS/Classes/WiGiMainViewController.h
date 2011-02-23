@@ -9,17 +9,17 @@
 #import <UIKit/UIKit.h>
 #import "Facebook.h"
 
-@interface WiGiMainViewController : UIViewController<FBSessionDelegate> {
+@interface WiGiMainViewController : UIViewController<FBSessionDelegate,FBRequestDelegate> {
 	//create facebook instance
 	Facebook *_myFacebook;
 	//setup UI
 	IBOutlet UILabel *_loginLabel;
+	IBOutlet UIImageView *_facebookPicture;
 	IBOutlet UIButton *_facebookLoginButton;
-	
 }
 @property (nonatomic, retain) UILabel *loginLabel;
 @property(readonly) Facebook *myFacebook;
 
 //setup button actions methods
--(IBAction)facebookLoginButtonClick:(id)sender;
+-(IBAction)facebookLoginButtonClicked:(id)sender;
 @end
