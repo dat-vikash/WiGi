@@ -16,10 +16,16 @@
 	IBOutlet UILabel *_loginLabel;
 	IBOutlet UIImageView *_facebookPicture;
 	IBOutlet UIButton *_facebookLoginButton;
+	IBOutlet UIImageView *_cameraImage;
+	IBOutlet UIButton *_snapItemButton;
 }
 @property (nonatomic, retain) UILabel *loginLabel;
 @property(readonly) Facebook *myFacebook;
+@property(nonatomic, retain) UIImageView *itemView;
+@property(nonatomic, retain) UIButton *snapItem;
 
 //setup button actions methods
 -(IBAction)facebookLoginButtonClicked:(id)sender;
+-(IBAction)getPhoto:(id)sender;
+
 @end

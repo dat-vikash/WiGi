@@ -19,9 +19,17 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
     NSLog(@" in didFinishLaunchWithOptions with options: %@", launchOptions);
-    // Override point for customization after application launch.
+    
+	//Get screen bounds 
+	CGRect screenBounds = [[UIScreen mainScreen ] applicationFrame];
+	CGRect windowBounds = screenBounds;
+	windowBounds.origin.y = 0.0;
+	
+	//initialize the window
+	self.window = [[UIWindow alloc] initWithFrame:screenBounds];
+	//initial main view
 	self.wigiMainViewController = [[WiGiMainViewController alloc] init];
-	self.wigiMainViewController.view.frame = CGRectMake(0, 20, 320, 460);
+	self.wigiMainViewController.view.frame = windowBounds;
 	[self.window addSubview:self.wigiMainViewController.view];
 	[self.window makeKeyAndVisible];
 	
