@@ -1,0 +1,5 @@
+build/
+WiGi.xcodeproj/*.pbxuser
+WiGi.xcodeproj/*.mode*
+*~
+*#
