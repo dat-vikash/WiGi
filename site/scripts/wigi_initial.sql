@@ -1,0 +1,4 @@
+CREATE DATABASE wigi;
+CREATE USER wigi_user IDENTIFIED BY 'w1g1u53r';
+GRANT USAGE ON wigi.* to wigi_user IDENTIFIED BY 'w1g1u53r';
+GRANT SELECT, INSERT, DELETE, UPDATE ON wigi.* to 'wigi_user' IDENTIFIED BY 'w1g1u53r' ;
