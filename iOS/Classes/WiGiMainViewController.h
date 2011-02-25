@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "Facebook.h"
+#import "WiGiAppDelegate.h"
 
-@interface WiGiMainViewController : UIViewController<FBSessionDelegate,FBRequestDelegate> {
-	//create facebook instance
-	Facebook *_myFacebook;
+@interface WiGiMainViewController : UIViewController<FBSessionDelegate,FBRequestDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate> {
+
 	//setup UI
 	IBOutlet UILabel *_loginLabel;
 	IBOutlet UIImageView *_facebookPicture;
@@ -20,10 +20,9 @@
 	IBOutlet UIButton *_snapItemButton;
 }
 @property (nonatomic, retain) UILabel *loginLabel;
-@property(readonly) Facebook *myFacebook;
+
 @property(nonatomic, retain) UIImageView *itemView;
 @property(nonatomic, retain) UIButton *snapItem;
-
 //setup button actions methods
 -(IBAction)facebookLoginButtonClicked:(id)sender;
 -(IBAction)getPhoto:(id)sender;

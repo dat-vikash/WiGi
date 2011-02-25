@@ -8,15 +8,27 @@
 
 #import <UIKit/UIKit.h>
 #import "WiGiMainViewController.h"
+#import "Facebook.h"
 
 @interface WiGiAppDelegate : NSObject <UIApplicationDelegate> {
-    UIWindow *window;
+    //window and tabbar instance
+	UIWindow *window;
+	UITabBarController *wigiTabController;
 	
-	//create instance of our main view controller
-	WiGiMainViewController *wigiMainViewController;
+	//create facebook instance
+	Facebook *_myFacebook;
+	NSArray *_myPermissions;
+	BOOL *_isLoggedIn;
+
+	
+	
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
-@property (nonatomic, retain) IBOutlet WiGiMainViewController *wigiMainViewController;
+@property (nonatomic, retain) IBOutlet UITabBarController *wigiTabController;
+@property(nonatomic, retain) Facebook *myFacebook;
+@property (nonatomic, retain) NSArray *myPermissions;
+@property (nonatomic) BOOL *isLoggedIn;
+
 @end
 

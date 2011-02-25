@@ -8,27 +8,22 @@
 
 #import "WiGiMainViewController.h"
 
-//global contants
-//Facebook appID needed for authorization
-static NSString* kAppId = @"195151467166916";
+WiGiAppDelegate *myAppDelegate;
 
 @implementation WiGiMainViewController
 
-@synthesize loginLabel = _loginLabel, myFacebook = _myFacebook;
+@synthesize loginLabel = _loginLabel, itemView = _cameraImage,
+			snapItem = _snapItemButton;
 
 // UIVIEWCONTROLLER METHODS
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    //check for facebook apikey
-	if (!kAppId){
-		NSLog(@"missing facebook App id");
-		exit(1);
-		return nil;
-	}
+	NSLog(@"in here");
 	
 	self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization.
+		
+        
     }
     return self;
 }
@@ -37,10 +32,17 @@ static NSString* kAppId = @"195151467166916";
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
-	NSLog(@"In viewDidLoad...initializing facebook");
-	_myFacebook = [[Facebook alloc] initWithAppId:kAppId];
-	[self.loginLabel setText:@" Login"];
-    [super viewDidLoad];
+	NSLog(@"In viewDidLoad...checking if user is logged in");
+	// get appdelicate
+	myAppDelegate = (WiGiAppDelegate*) [[UIApplication sharedApplication] delegate];
+	if (myAppDelegate.isLoggedIn) {
+		//user is logged in
+		[self fbDidLogin];
+	}else {
+		[self.loginLabel setText:@" Login"];
+	}
+
+	[super viewDidLoad];
 }
 
 
@@ -67,18 +69,21 @@ static NSString* kAppId = @"195151467166916";
 
 
 - (void)dealloc {
-	[_myFacebook release];
 	[_loginLabel release];
 	[_facebookPicture release];
 	[_facebookLoginButton release];
+	[_cameraImage release];
+	[_snapItemButton release];
+	
     [super dealloc];
 }
 
-/* Private functions
+/*Public functions
  */
 -(void)facebookLogin {
+	NSLog(@"in facebooklogin");
 	//authorize takes array of permissions
-	[self.myFacebook authorize:nil delegate:self];
+	[myAppDelegate.myFacebook authorize:nil delegate:self];
 }
 
 /* Implemented facebook callbacks
@@ -86,10 +91,13 @@ static NSString* kAppId = @"195151467166916";
 - (void)fbDidLogin {
 	//hide login button
 	_facebookLoginButton.hidden = YES;
-	[self.myFacebook requestWithGraphPath:@"me" andDelegate:self];
-	[self.myFacebook requestWithGraphPath:@"me/picture" andDelegate:self];
+	[myAppDelegate.myFacebook requestWithGraphPath:@"me" andDelegate:self];
+	[myAppDelegate.myFacebook requestWithGraphPath:@"me/picture" andDelegate:self];
 	NSLog(@"Fb login successful");
-	
+	//update accesstoken and expirDate
+	[[NSUserDefaults standardUserDefaults] setObject:[myAppDelegate.myFacebook accessToken] forKey:@"wigi_facebook_token"];
+	[[NSUserDefaults standardUserDefaults] setObject:[myAppDelegate.myFacebook expirationDate] forKey:@"wigi_facebook_expiration_date"];
+	[[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 
@@ -101,6 +109,34 @@ static NSString* kAppId = @"195151467166916";
 	[self facebookLogin];
 }
 
+
+-(IBAction) getPhoto: (id) sender {
+	NSLog(@"in getPhoto");
+	//get image picture controller for camera
+	UIImagePickerController *picker = [[UIImagePickerController alloc] init] ;
+	picker.delegate = self;
+	
+	//determine which button was pressed
+	if((UIButton *) sender == self.snapItem) {
+		//Snap Item button pressed
+		//set picker source type as camera
+		picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+	}
+	
+	[self presentModalViewController:picker animated:YES];
+	
+}
+
+/////////////////////////////////////////////////////
+// UIImagePickerControllerDelegate
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+		//dimiss popup modal
+	NSLog(@"in didFinishPickingMeidaWithInfo: %@", info);
+	[picker dismissModalViewControllerAnimated:YES];
+	self.itemView.image =  [info objectForKey:@"UIImagePickerControllerOriginalImage"];
+	
+}
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // FBRequestDelegate

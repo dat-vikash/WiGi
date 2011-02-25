@@ -9,17 +9,50 @@
 #import "WiGiAppDelegate.h"
 #import "WiGiMainViewController.h"
 
+//global contants
+//Facebook appID needed for authorization
+static NSString* kAppId = @"195151467166916";
+
 @implementation WiGiAppDelegate
 
 @synthesize window;
-@synthesize wigiMainViewController;
+@synthesize wigiTabController;
+@synthesize myFacebook = _myFacebook, isLoggedIn = _isLoggedIn, myPermissions = _myPermissions;
 
 #pragma mark -
 #pragma mark Application lifecycle
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
     NSLog(@" in didFinishLaunchWithOptions with options: %@", launchOptions);
-    
+	//check for facebook apikey
+	if (!kAppId){
+		NSLog(@"missing facebook App id");
+		exit(1);
+		return nil;
+	}
+	
+	//initialize facebook connect
+	self.myFacebook = [[Facebook alloc] initWithAppId:kAppId];
+	//Check if the user is logged in
+	NSString *facebookTokenString = [[NSUserDefaults standardUserDefaults] objectForKey:@"wigi_facebook_token"];
+	NSDate *facebookExpirationDate = [[NSUserDefaults standardUserDefaults] objectForKey:@"wigi_facebook_expiration_date"];
+	
+	if (facebookTokenString != nil && facebookExpirationDate !=nil){
+		NSLog(@"facebook token string and expiration date set");
+		[self.myFacebook setAccessToken:facebookTokenString];
+		[self.myFacebook setExpirationDate:facebookExpirationDate];
+	}
+	
+	//determine if session is valid
+	if ([self.myFacebook isSessionValid]) {
+		NSLog(@"facebook session is valid");
+		self.isLoggedIn = TRUE;
+	}else{
+		NSLog(@"facebook session not valid");
+		self.isLoggedIn = FALSE;
+	}
+	
+  /*  
 	//Get screen bounds 
 	CGRect screenBounds = [[UIScreen mainScreen ] applicationFrame];
 	CGRect windowBounds = screenBounds;
@@ -31,6 +64,8 @@
 	self.wigiMainViewController = [[WiGiMainViewController alloc] init];
 	self.wigiMainViewController.view.frame = windowBounds;
 	[self.window addSubview:self.wigiMainViewController.view];
+  */
+	[window addSubview:wigiTabController.view];
 	[self.window makeKeyAndVisible];
 	
 	return YES;
@@ -88,14 +123,16 @@
 
 //Function needed for facebook
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
-	return [[self.wigiMainViewController myFacebook] handleOpenURL:url];
+	return [self.myFacebook handleOpenURL:url];
 }
 
 
 - (void)dealloc {
     [self.window release];
-	[self.wigiMainViewController release];
-    [super dealloc];
+	[self.wigiTabController release];
+	[_myFacebook release];
+	[_myPermissions release];
+	[super dealloc];
 }
 
 
