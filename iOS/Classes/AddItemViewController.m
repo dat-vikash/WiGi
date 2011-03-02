@@ -84,7 +84,35 @@ WiGiAppDelegate *myAppDelegate;
 
 -(void)actionSheet: (UIActionSheet *) actionSheet clickedButtonAtIndex:(NSInteger) buttonIndex {
 	NSLog(@"button index: %d",buttonIndex);
+	UIImagePickerController *picker = [[UIImagePickerController alloc] init];
 	
+	switch (buttonIndex) {
+		case 0:
+			//take photo
+			picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+			[self presentModalViewController:picker animated:YES];
+			break;
+		case 1:
+			//take photo from library
+			picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+			[self presentModalViewController:picker animated:YES];
+			break;
+		case 2:
+			//cancel button
+			break;
+		default:
+			//default same as cancel
+			break;
+	}
+		
+}
+
+/*UIImagePickerControllerDelegate methods
+ */
+-(void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
+		//dismiss modal
+	[picker dismissModalViewControllerAnimated:YES];
+	self.selectedItem = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
 	
 }
 
