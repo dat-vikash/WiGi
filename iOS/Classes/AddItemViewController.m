@@ -1,25 +1,22 @@
 //
-//  LoginModalViewController.m
+//  AddItemViewController.m
 //  WiGi
 //
-//  Created by Vikash Dat on 3/1/11.
+//  Created by Vikash Dat on 3/2/11.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import "LoginModalViewController.h"
+#import "AddItemViewController.h"
 
 WiGiAppDelegate *myAppDelegate;
-
-@implementation LoginModalViewController
-@synthesize facebookLoginButton, loginAppLabel;
+@implementation AddItemViewController
+@synthesize selectedItem = _selectedItem;
 
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-	NSLog(@"in loginmodalviewcontroller initiwithnibname");
-	//get appDelegate
-	myAppDelegate = (WiGiAppDelegate*) [[UIApplication sharedApplication] delegate];	
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+	NSLog(@"additemviewcontroller initwithnib");
     if (self) {
         // Custom initialization.
     }
@@ -30,10 +27,19 @@ WiGiAppDelegate *myAppDelegate;
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
-	NSLog(@"in loginbmodalviewcontroller viewdidload");
+	NSLog(@"additemviewcontroller viewdidload");
+	// get appdelicate
+	myAppDelegate = (WiGiAppDelegate*) [[UIApplication sharedApplication] delegate];
     [super viewDidLoad];
 }
 
+-(void) viewDidAppear:(BOOL)animated {
+	
+	[super viewWillAppear:animated];
+	//show actionsheet with add item options
+	[self showItemOptionsActionSheet];
+	
+}
 
 /*
 // Override to allow orientations other than the default portrait orientation.
@@ -58,15 +64,28 @@ WiGiAppDelegate *myAppDelegate;
 
 
 - (void)dealloc {
-	[loginAppLabel release];
-	[facebookLoginButton release];
+	[_selectedItem release];
 	[myAppDelegate release];
     [super dealloc];
 }
 
 
--(IBAction) doFacebookLogin: (id) sender {
-	[myAppDelegate facebookLogin];
+-(void)showItemOptionsActionSheet {
+	UIActionSheet *popupItemOptions = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil 
+														 otherButtonTitles:@"Take Photo",@"Choose from Library", nil];
+	popupItemOptions.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
+	[popupItemOptions showFromTabBar:myAppDelegate.wigiTabController.view];
+	[popupItemOptions release];
+	
+}
+
+/* UIActionSheetDelegate methods 
+ */
+
+-(void)actionSheet: (UIActionSheet *) actionSheet clickedButtonAtIndex:(NSInteger) buttonIndex {
+	NSLog(@"button index: %d",buttonIndex);
+	
+	
 }
 
 @end

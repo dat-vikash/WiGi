@@ -26,11 +26,11 @@
 		C007D93B130D787600A2965A /* FBDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = C007D930130D787600A2965A /* FBDialog.m */; };
 		C007D948130D7C4900A2965A /* WiGiMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C007D946130D7C4900A2965A /* WiGiMainViewController.m */; };
 		C007D949130D7C4900A2965A /* WiGiMainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C007D947130D7C4900A2965A /* WiGiMainViewController.xib */; };
-		C090C34613174A03007196F2 /* AlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C090C34413174A03007196F2 /* AlbumViewController.m */; };
-		C090C34713174A03007196F2 /* AlbumViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C090C34513174A03007196F2 /* AlbumViewController.xib */; };
 		C0D2EE5A131DFEB400A3805D /* LoginModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0D2EE58131DFEB400A3805D /* LoginModalViewController.m */; };
 		C0D2EE5B131DFEB400A3805D /* LoginModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0D2EE59131DFEB400A3805D /* LoginModalViewController.xib */; };
 		C0D2EE81131E05A900A3805D /* button_facebookconnect-large.png in Resources */ = {isa = PBXBuildFile; fileRef = C0D2EE80131E05A900A3805D /* button_facebookconnect-large.png */; };
+		C0D2EEAE131E993B00A3805D /* AddItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0D2EEAC131E993B00A3805D /* AddItemViewController.m */; };
+		C0D2EEAF131E993B00A3805D /* AddItemViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0D2EEAD131E993B00A3805D /* AddItemViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,13 +70,13 @@
 		C007D945130D7C4900A2965A /* WiGiMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WiGiMainViewController.h; sourceTree = "<group>"; };
 		C007D946130D7C4900A2965A /* WiGiMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WiGiMainViewController.m; sourceTree = "<group>"; };
 		C007D947130D7C4900A2965A /* WiGiMainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = WiGiMainViewController.xib; path = Classes/WiGiMainViewController.xib; sourceTree = "<group>"; };
-		C090C34313174A03007196F2 /* AlbumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumViewController.h; sourceTree = "<group>"; };
-		C090C34413174A03007196F2 /* AlbumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumViewController.m; sourceTree = "<group>"; };
-		C090C34513174A03007196F2 /* AlbumViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = AlbumViewController.xib; path = Classes/AlbumViewController.xib; sourceTree = "<group>"; };
 		C0D2EE57131DFEB400A3805D /* LoginModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginModalViewController.h; sourceTree = "<group>"; };
 		C0D2EE58131DFEB400A3805D /* LoginModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginModalViewController.m; sourceTree = "<group>"; };
 		C0D2EE59131DFEB400A3805D /* LoginModalViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = LoginModalViewController.xib; path = Classes/LoginModalViewController.xib; sourceTree = "<group>"; };
 		C0D2EE80131E05A900A3805D /* button_facebookconnect-large.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "button_facebookconnect-large.png"; path = "../../../../Downloads/button_facebookconnect-large.png"; sourceTree = SOURCE_ROOT; };
+		C0D2EEAB131E993B00A3805D /* AddItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddItemViewController.h; sourceTree = "<group>"; };
+		C0D2EEAC131E993B00A3805D /* AddItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddItemViewController.m; sourceTree = "<group>"; };
+		C0D2EEAD131E993B00A3805D /* AddItemViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = AddItemViewController.xib; path = Classes/AddItemViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,10 +100,10 @@
 				1D3623250D0F684500981E51 /* WiGiAppDelegate.m */,
 				C007D945130D7C4900A2965A /* WiGiMainViewController.h */,
 				C007D946130D7C4900A2965A /* WiGiMainViewController.m */,
-				C090C34313174A03007196F2 /* AlbumViewController.h */,
-				C090C34413174A03007196F2 /* AlbumViewController.m */,
 				C0D2EE57131DFEB400A3805D /* LoginModalViewController.h */,
 				C0D2EE58131DFEB400A3805D /* LoginModalViewController.m */,
+				C0D2EEAB131E993B00A3805D /* AddItemViewController.h */,
+				C0D2EEAC131E993B00A3805D /* AddItemViewController.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -141,9 +141,9 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C0D2EEAD131E993B00A3805D /* AddItemViewController.xib */,
 				C0D2EE80131E05A900A3805D /* button_facebookconnect-large.png */,
 				C0D2EE59131DFEB400A3805D /* LoginModalViewController.xib */,
-				C090C34513174A03007196F2 /* AlbumViewController.xib */,
 				C007D947130D7C4900A2965A /* WiGiMainViewController.xib */,
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* WiGi-Info.plist */,
@@ -252,9 +252,9 @@
 				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
 				C007D931130D787600A2965A /* FBDialog.bundle in Resources */,
 				C007D949130D7C4900A2965A /* WiGiMainViewController.xib in Resources */,
-				C090C34713174A03007196F2 /* AlbumViewController.xib in Resources */,
 				C0D2EE5B131DFEB400A3805D /* LoginModalViewController.xib in Resources */,
 				C0D2EE81131E05A900A3805D /* button_facebookconnect-large.png in Resources */,
+				C0D2EEAF131E993B00A3805D /* AddItemViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,8 +278,8 @@
 				C007D93A130D787600A2965A /* FBLoginDialog.m in Sources */,
 				C007D93B130D787600A2965A /* FBDialog.m in Sources */,
 				C007D948130D7C4900A2965A /* WiGiMainViewController.m in Sources */,
-				C090C34613174A03007196F2 /* AlbumViewController.m in Sources */,
 				C0D2EE5A131DFEB400A3805D /* LoginModalViewController.m in Sources */,
+				C0D2EEAE131E993B00A3805D /* AddItemViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

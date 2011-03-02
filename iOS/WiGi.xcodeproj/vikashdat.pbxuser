@@ -10,9 +10,9 @@
 	};
 	1D3623250D0F684500981E51 /* WiGiAppDelegate.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1965, 2860}}";
-			sepNavSelRange = "{6440, 0}";
-			sepNavVisRange = "{5657, 811}";
+			sepNavIntBoundsRect = "{{0, 0}, {1965, 2912}}";
+			sepNavSelRange = "{1675, 0}";
+			sepNavVisRange = "{5784, 844}";
 			sepNavWindowFrame = "{{61, 173}, {750, 558}}";
 		};
 	};
@@ -296,9 +296,9 @@
 	};
 	C007D946130D7C4900A2965A /* WiGiMainViewController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {959, 1989}}";
-			sepNavSelRange = "{786, 81}";
-			sepNavVisRange = "{253, 993}";
+			sepNavIntBoundsRect = "{{0, 0}, {959, 2106}}";
+			sepNavSelRange = "{2010, 0}";
+			sepNavVisRange = "{495, 1045}";
 			sepNavWindowFrame = "{{153, 89}, {750, 558}}";
 		};
 	};
@@ -376,6 +376,12 @@
 		rLoc = 9223372036854775808;
 	};
 	C090C34313174A03007196F2 /* AlbumViewController.h */ = {
+		isa = PBXFileReference;
+		fileEncoding = 4;
+		lastKnownFileType = sourcecode.c.h;
+		name = AlbumViewController.h;
+		path = /Users/vikashdat/Documents/workspace/WiGi/iOS/Classes/AlbumViewController.h;
+		sourceTree = "<absolute>";
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {959, 510}}";
 			sepNavSelRange = "{0, 0}";
@@ -383,10 +389,16 @@
 		};
 	};
 	C090C34413174A03007196F2 /* AlbumViewController.m */ = {
+		isa = PBXFileReference;
+		fileEncoding = 4;
+		lastKnownFileType = sourcecode.c.objc;
+		name = AlbumViewController.m;
+		path = /Users/vikashdat/Documents/workspace/WiGi/iOS/Classes/AlbumViewController.m;
+		sourceTree = "<absolute>";
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1139, 780}}";
 			sepNavSelRange = "{0, 0}";
-			sepNavVisRange = "{582, 868}";
+			sepNavVisRange = "{0, 1149}";
 		};
 	};
 	C090C415131BF42A007196F2 /* PBXTextBookmark */ = {
@@ -464,7 +476,7 @@
 		fRef = C007D946130D7C4900A2965A /* WiGiMainViewController.m */;
 		name = "WiGiMainViewController.m: 173";
 		rLen = 0;
-		rLoc = 3652;
+		rLoc = 3678;
 		rType = 0;
 		vrLen = 898;
 		vrLoc = 144;
@@ -585,7 +597,7 @@
 		fRef = C007D946130D7C4900A2965A /* WiGiMainViewController.m */;
 		name = "WiGiMainViewController.m: 90";
 		rLen = 0;
-		rLoc = 2005;
+		rLoc = 2031;
 		rType = 0;
 		vrLen = 1273;
 		vrLoc = 1800;
@@ -635,7 +647,7 @@
 		fRef = C007D946130D7C4900A2965A /* WiGiMainViewController.m */;
 		name = "WiGiMainViewController.m: 81";
 		rLen = 0;
-		rLoc = 2005;
+		rLoc = 2031;
 		rType = 0;
 		vrLen = 1328;
 		vrLoc = 1781;
@@ -893,7 +905,7 @@
 		fRef = C007D946130D7C4900A2965A /* WiGiMainViewController.m */;
 		name = "WiGiMainViewController.m: 89";
 		rLen = 0;
-		rLoc = 2023;
+		rLoc = 2049;
 		rType = 0;
 		vrLen = 1163;
 		vrLoc = 2905;
@@ -978,9 +990,9 @@
 	};
 	C0D2EE58131DFEB400A3805D /* LoginModalViewController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1139, 936}}";
-			sepNavSelRange = "{1875, 0}";
-			sepNavVisRange = "{955, 929}";
+			sepNavIntBoundsRect = "{{0, 0}, {1139, 949}}";
+			sepNavSelRange = "{1801, 0}";
+			sepNavVisRange = "{955, 955}";
 		};
 	};
 	C0D2EE75131E044300A3805D /* PBXTextBookmark */ = {
@@ -1049,7 +1061,7 @@
 		fRef = C0D2EE58131DFEB400A3805D /* LoginModalViewController.m */;
 		name = "LoginModalViewController.m: 66";
 		rLen = 0;
-		rLoc = 1844;
+		rLoc = 1870;
 		rType = 0;
 		vrLen = 1247;
 		vrLoc = 3;

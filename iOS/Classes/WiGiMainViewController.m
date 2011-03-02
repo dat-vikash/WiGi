@@ -79,6 +79,7 @@ WiGiAppDelegate *myAppDelegate;
 	[_headerLabel release];
 	[_userNameLabel release];
 	[_facebookPicture release];
+	[myAppDelegate release];
 	[super dealloc];
 }
 
