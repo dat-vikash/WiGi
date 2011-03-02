@@ -10,21 +10,17 @@
 #import "Facebook.h"
 #import "WiGiAppDelegate.h"
 
-@interface WiGiMainViewController : UIViewController<FBSessionDelegate,FBRequestDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate> {
+@interface WiGiMainViewController : UIViewController<FBRequestDelegate> {
 
 	//setup UI
-	IBOutlet UILabel *_loginLabel;
+	IBOutlet UILabel *_headerLabel;
+	IBOutlet UILabel *_userNameLabel;
 	IBOutlet UIImageView *_facebookPicture;
-	IBOutlet UIButton *_facebookLoginButton;
-	IBOutlet UIImageView *_cameraImage;
-	IBOutlet UIButton *_snapItemButton;
+
 }
-@property (nonatomic, retain) UILabel *loginLabel;
+@property (nonatomic, retain) UILabel *headerLabel;
+@property (nonatomic, retain) UILabel *userNameLabel;
+@property (nonatomic, retain) UIImageView *facebookPicture;
 
-@property(nonatomic, retain) UIImageView *itemView;
-@property(nonatomic, retain) UIButton *snapItem;
-//setup button actions methods
--(IBAction)facebookLoginButtonClicked:(id)sender;
--(IBAction)getPhoto:(id)sender;
-
+-(void) refreshView;
 @end

@@ -17,7 +17,9 @@ static NSString* kAppId = @"195151467166916";
 
 @synthesize window;
 @synthesize wigiTabController;
+
 @synthesize myFacebook = _myFacebook, isLoggedIn = _isLoggedIn, myPermissions = _myPermissions;
+@synthesize HEADER_TEXT;
 
 #pragma mark -
 #pragma mark Application lifecycle
@@ -31,8 +33,12 @@ static NSString* kAppId = @"195151467166916";
 		return nil;
 	}
 	
+	//set app header
+	self.HEADER_TEXT = @"WANT IT, GET IT";
+	
 	//initialize facebook connect
 	self.myFacebook = [[Facebook alloc] initWithAppId:kAppId];
+	//[self facebookLogout];
 	//Check if the user is logged in
 	NSString *facebookTokenString = [[NSUserDefaults standardUserDefaults] objectForKey:@"wigi_facebook_token"];
 	NSDate *facebookExpirationDate = [[NSUserDefaults standardUserDefaults] objectForKey:@"wigi_facebook_expiration_date"];
@@ -47,9 +53,12 @@ static NSString* kAppId = @"195151467166916";
 	if ([self.myFacebook isSessionValid]) {
 		NSLog(@"facebook session is valid");
 		self.isLoggedIn = TRUE;
+		[window setRootViewController:wigiTabController];
 	}else{
 		NSLog(@"facebook session not valid");
+		//[self facebookLogin];
 		self.isLoggedIn = FALSE;
+		[self showLoginModal];
 	}
 	
   /*  
@@ -61,11 +70,11 @@ static NSString* kAppId = @"195151467166916";
 	//initialize the window
 	self.window = [[UIWindow alloc] initWithFrame:screenBounds];
 	//initial main view
-	self.wigiMainViewController = [[WiGiMainViewController alloc] init];
+	
 	self.wigiMainViewController.view.frame = windowBounds;
 	[self.window addSubview:self.wigiMainViewController.view];
   */
-	[window addSubview:wigiTabController.view];
+	NSLog(@"about to make visibile");
 	[self.window makeKeyAndVisible];
 	
 	return YES;
@@ -126,12 +135,88 @@ static NSString* kAppId = @"195151467166916";
 	return [self.myFacebook handleOpenURL:url];
 }
 
+/* functions
+ */
+
+-(void) showLoginModal {
+	NSLog(@"in showLoginModal");
+	if (_loginModalRootView == nil){
+		NSLog(@"root view nil");
+		//create root view to present modal onto
+		_loginModalRootView = [[UIViewController alloc] init];
+	}
+	if (_modalLogin == nil){
+		NSLog(@"_modallogin is nil");
+		//create modal view
+		_modalLogin = [[LoginModalViewController alloc] init];
+	}
+	
+	//push view so it can be used to present modal view
+	[window addSubview:_loginModalRootView.view];
+	 [_loginModalRootView presentModalViewController:_modalLogin animated:YES];
+}
+
+-(void)facebookLogin {
+	NSLog(@"in facebooklogin");
+	//authorize takes array of permissions
+	[self.myFacebook authorize:nil delegate:self];
+}
+
+-(void)facebookLogout {
+	[self.myFacebook logout:self];
+}
+
+/* Implemented facebook callbacks
+ */
+
+/**
+ * Called when the user successfully logged in.
+ */
+- (void)fbDidLogin {
+	NSLog(@"Fb login successful");
+	//update accesstoken and expirDate
+	[[NSUserDefaults standardUserDefaults] setObject:[self.myFacebook accessToken] forKey:@"wigi_facebook_token"];
+	[[NSUserDefaults standardUserDefaults] setObject:[self.myFacebook expirationDate] forKey:@"wigi_facebook_expiration_date"];
+	[[NSUserDefaults standardUserDefaults] synchronize];
+	//update login status
+	self.isLoggedIn = TRUE;
+	//show wigitabcontroller
+	//[window addSubview:wigiTabController.view];
+	[window setRootViewController:wigiTabController];
+	
+}
+/**
+ * Called when the user dismissed the dialog without logging in.
+ */
+- (void)fbDidNotLogin:(BOOL)cancelled {
+	NSLog(@"fbDidNotLogin");
+}
+
+/**
+ * Called when the user logged out.
+ */
+- (void)fbDidLogout{
+	NSLog(@"fbDidLogout");
+	//clear userdefaults
+	[[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"wigi_facebook_token"];
+	[[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"wigi_facebook_expiration_date"];
+	[[NSUserDefaults standardUserDefaults] synchronize];
+	//update login status
+	self.isLoggedIn = TRUE;
+	 
+}
+
+
+
 
 - (void)dealloc {
     [self.window release];
 	[self.wigiTabController release];
 	[_myFacebook release];
 	[_myPermissions release];
+	[self.HEADER_TEXT release];
+	[_loginModalRootView release];
+	[_modalLogin release];
 	[super dealloc];
 }
 

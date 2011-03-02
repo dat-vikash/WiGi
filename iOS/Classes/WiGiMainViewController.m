@@ -12,8 +12,7 @@ WiGiAppDelegate *myAppDelegate;
 
 @implementation WiGiMainViewController
 
-@synthesize loginLabel = _loginLabel, itemView = _cameraImage,
-			snapItem = _snapItemButton;
+@synthesize headerLabel = _headerLabel, userNameLabel = _userNameLabel, facebookPicture = _facebookPicture;
 
 // UIVIEWCONTROLLER METHODS
 
@@ -32,14 +31,21 @@ WiGiAppDelegate *myAppDelegate;
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
-	NSLog(@"In viewDidLoad...checking if user is logged in");
+	NSLog(@"In viewDidLoad");
 	// get appdelicate
-	myAppDelegate = (WiGiAppDelegate*) [[UIApplication sharedApplication] delegate];
+	myAppDelegate = (WiGiAppDelegate*) [[UIApplication sharedApplication] delegate];	
+	//set up view
+	[self.headerLabel setText:myAppDelegate.HEADER_TEXT];
+	//check if user is logged in
 	if (myAppDelegate.isLoggedIn) {
 		//user is logged in
-		[self fbDidLogin];
+		NSLog(@"HERE");
+		//get facebook information to populate view
+		[self retrieveFacebookInfoForUser];
 	}else {
-		[self.loginLabel setText:@" Login"];
+		//user is not logged in
+		NSLog(@"user not logged in");
+		//show login modal
 	}
 
 	[super viewDidLoad];
@@ -69,74 +75,29 @@ WiGiAppDelegate *myAppDelegate;
 
 
 - (void)dealloc {
-	[_loginLabel release];
+	
+	[_headerLabel release];
+	[_userNameLabel release];
 	[_facebookPicture release];
-	[_facebookLoginButton release];
-	[_cameraImage release];
-	[_snapItemButton release];
-	
-    [super dealloc];
+	[super dealloc];
 }
 
-/*Public functions
- */
--(void)facebookLogin {
-	NSLog(@"in facebooklogin");
-	//authorize takes array of permissions
-	[myAppDelegate.myFacebook authorize:nil delegate:self];
-}
 
-/* Implemented facebook callbacks
+/*
+ Methods
  */
-- (void)fbDidLogin {
-	//hide login button
-	_facebookLoginButton.hidden = YES;
+
+/* This method retrieves the users profile picture and name
+ by initiating a graph request to facebook. Request triggers a facebook
+ callback method.
+ */
+-(void) retrieveFacebookInfoForUser {
+	NSLog(@"retrieveFacebookInfoForUser");
 	[myAppDelegate.myFacebook requestWithGraphPath:@"me" andDelegate:self];
-	[myAppDelegate.myFacebook requestWithGraphPath:@"me/picture" andDelegate:self];
-	NSLog(@"Fb login successful");
-	//update accesstoken and expirDate
-	[[NSUserDefaults standardUserDefaults] setObject:[myAppDelegate.myFacebook accessToken] forKey:@"wigi_facebook_token"];
-	[[NSUserDefaults standardUserDefaults] setObject:[myAppDelegate.myFacebook expirationDate] forKey:@"wigi_facebook_expiration_date"];
-	[[NSUserDefaults standardUserDefaults] synchronize];
-}
-
-
-/* IBACTIONS
- */
-
--(IBAction)facebookLoginButtonClicked:(id) sender {
-	NSLog(@"Login button clicked");
-	[self facebookLogin];
-}
-
-
--(IBAction) getPhoto: (id) sender {
-	NSLog(@"in getPhoto");
-	//get image picture controller for camera
-	UIImagePickerController *picker = [[UIImagePickerController alloc] init] ;
-	picker.delegate = self;
-	
-	//determine which button was pressed
-	if((UIButton *) sender == self.snapItem) {
-		//Snap Item button pressed
-		//set picker source type as camera
-		picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-	}
-	
-	[self presentModalViewController:picker animated:YES];
+	[myAppDelegate.myFacebook requestWithGraphPath:@"me/picture" andDelegate:self];	
 	
 }
 
-/////////////////////////////////////////////////////
-// UIImagePickerControllerDelegate
-
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-		//dimiss popup modal
-	NSLog(@"in didFinishPickingMeidaWithInfo: %@", info);
-	[picker dismissModalViewControllerAnimated:YES];
-	self.itemView.image =  [info objectForKey:@"UIImagePickerControllerOriginalImage"];
-	
-}
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // FBRequestDelegate
@@ -167,13 +128,15 @@ WiGiAppDelegate *myAppDelegate;
 	}
 	if ([result isKindOfClass:[NSData class]]) {
 		NSLog(@"1");
+		//setimage 
 		UIImage *img = [[UIImage alloc] initWithData: result];
-		[_facebookPicture setImage:img];
+		[self.facebookPicture setImage:img];
+	
 	}
 	if ([result isKindOfClass:[NSDictionary class]]) {
-			NSLog(@"2");
-			[self.loginLabel setText:[result objectForKey:@"name"]];
-	}
+			//set name
+		[self.userNameLabel setText:[result objectForKey:@"name"]];
+		}
 		 NSLog(@"result: %@",result);
 		
 };

@@ -8,12 +8,17 @@
 
 #import <UIKit/UIKit.h>
 #import "WiGiMainViewController.h"
+#import "LoginModalViewController.h"
 #import "Facebook.h"
 
-@interface WiGiAppDelegate : NSObject <UIApplicationDelegate> {
+@interface WiGiAppDelegate : NSObject <FBSessionDelegate,UIApplicationDelegate> {
     //window and tabbar instance
 	UIWindow *window;
 	UITabBarController *wigiTabController;
+	UIViewController *_loginModalRootView;
+	UIViewController *_modalLogin;
+	
+	NSString *HEADER_TEXT;
 	
 	//create facebook instance
 	Facebook *_myFacebook;
@@ -24,11 +29,14 @@
 	
 }
 
+@property (nonatomic, retain) NSString * HEADER_TEXT;
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) IBOutlet UITabBarController *wigiTabController;
 @property(nonatomic, retain) Facebook *myFacebook;
 @property (nonatomic, retain) NSArray *myPermissions;
 @property (nonatomic) BOOL *isLoggedIn;
 
+-(void)facebookLogin;
+-(void)facebookLogout;
 @end
 
