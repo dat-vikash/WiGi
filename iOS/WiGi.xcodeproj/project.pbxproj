@@ -31,6 +31,8 @@
 		C0D2EE81131E05A900A3805D /* button_facebookconnect-large.png in Resources */ = {isa = PBXBuildFile; fileRef = C0D2EE80131E05A900A3805D /* button_facebookconnect-large.png */; };
 		C0D2EEAE131E993B00A3805D /* AddItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0D2EEAC131E993B00A3805D /* AddItemViewController.m */; };
 		C0D2EEAF131E993B00A3805D /* AddItemViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0D2EEAD131E993B00A3805D /* AddItemViewController.xib */; };
+		C0D2EF101325389800A3805D /* AddInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0D2EF0E1325389800A3805D /* AddInfoViewController.m */; };
+		C0D2EF111325389800A3805D /* AddInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0D2EF0F1325389800A3805D /* AddInfoViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -77,6 +79,9 @@
 		C0D2EEAB131E993B00A3805D /* AddItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddItemViewController.h; sourceTree = "<group>"; };
 		C0D2EEAC131E993B00A3805D /* AddItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddItemViewController.m; sourceTree = "<group>"; };
 		C0D2EEAD131E993B00A3805D /* AddItemViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = AddItemViewController.xib; path = Classes/AddItemViewController.xib; sourceTree = "<group>"; };
+		C0D2EF0D1325389800A3805D /* AddInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddInfoViewController.h; sourceTree = "<group>"; };
+		C0D2EF0E1325389800A3805D /* AddInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddInfoViewController.m; sourceTree = "<group>"; };
+		C0D2EF0F1325389800A3805D /* AddInfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = AddInfoViewController.xib; path = Classes/AddInfoViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +109,8 @@
 				C0D2EE58131DFEB400A3805D /* LoginModalViewController.m */,
 				C0D2EEAB131E993B00A3805D /* AddItemViewController.h */,
 				C0D2EEAC131E993B00A3805D /* AddItemViewController.m */,
+				C0D2EF0D1325389800A3805D /* AddInfoViewController.h */,
+				C0D2EF0E1325389800A3805D /* AddInfoViewController.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -141,6 +148,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C0D2EF0F1325389800A3805D /* AddInfoViewController.xib */,
 				C0D2EEAD131E993B00A3805D /* AddItemViewController.xib */,
 				C0D2EE80131E05A900A3805D /* button_facebookconnect-large.png */,
 				C0D2EE59131DFEB400A3805D /* LoginModalViewController.xib */,
@@ -255,6 +263,7 @@
 				C0D2EE5B131DFEB400A3805D /* LoginModalViewController.xib in Resources */,
 				C0D2EE81131E05A900A3805D /* button_facebookconnect-large.png in Resources */,
 				C0D2EEAF131E993B00A3805D /* AddItemViewController.xib in Resources */,
+				C0D2EF111325389800A3805D /* AddInfoViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,6 +289,7 @@
 				C007D948130D7C4900A2965A /* WiGiMainViewController.m in Sources */,
 				C0D2EE5A131DFEB400A3805D /* LoginModalViewController.m in Sources */,
 				C0D2EEAE131E993B00A3805D /* AddItemViewController.m in Sources */,
+				C0D2EF101325389800A3805D /* AddInfoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

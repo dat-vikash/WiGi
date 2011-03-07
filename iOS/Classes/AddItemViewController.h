@@ -8,11 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "WiGiAppDelegate.h"
+#import "AddInfoViewController.h"
 
 @interface AddItemViewController : UIViewController<UIActionSheetDelegate,UIImagePickerControllerDelegate> {
 	UIImage *_selectedItem;
-	
+	BOOL _userHasSelectedItem;
 }
 @property(nonatomic, retain) UIImage *selectedItem;
+@property(nonatomic) BOOL userHasSelectedItem;
 
 @end

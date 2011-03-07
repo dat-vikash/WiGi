@@ -10,13 +10,14 @@
 
 WiGiAppDelegate *myAppDelegate;
 @implementation AddItemViewController
-@synthesize selectedItem = _selectedItem;
+@synthesize selectedItem = _selectedItem, userHasSelectedItem = _userHasSelectedItem;
 
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
 	NSLog(@"additemviewcontroller initwithnib");
+	self.userHasSelectedItem = FALSE;
     if (self) {
         // Custom initialization.
     }
@@ -34,13 +35,23 @@ WiGiAppDelegate *myAppDelegate;
 }
 
 -(void) viewDidAppear:(BOOL)animated {
-	
+	NSLog(@"in viewdidAppear");
 	[super viewWillAppear:animated];
-	//show actionsheet with add item options
-	[self showItemOptionsActionSheet];
+	if (self.userHasSelectedItem) {
+		[self showAddInfoModal];	
+	}else {
+		//show actionsheet with add item options
+		[self showItemOptionsActionSheet];		
+	}
+
 	
 }
 
+-(void) viewDidDisappear:(BOOL)animated {
+	NSLog(@"in viewDidDisappear");
+	[super viewDidDisappear:animated];
+	
+}
 /*
 // Override to allow orientations other than the default portrait orientation.
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -64,6 +75,7 @@ WiGiAppDelegate *myAppDelegate;
 
 
 - (void)dealloc {
+	NSLog(@"IN DEALLOC");
 	[_selectedItem release];
 	[myAppDelegate release];
     [super dealloc];
@@ -79,6 +91,14 @@ WiGiAppDelegate *myAppDelegate;
 	
 }
 
+-(void)showAddInfoModal {
+	NSLog(@"in showAddInfoModal");
+	AddInfoViewController *addItemViewController = [[AddInfoViewController alloc] init];
+	addItemViewController.itemImage.image = self.selectedItem;
+	[self presentModalViewController:addItemViewController animated:YES];
+	[addItemViewController release];
+}
+
 /* UIActionSheetDelegate methods 
  */
 
@@ -88,22 +108,31 @@ WiGiAppDelegate *myAppDelegate;
 	
 	switch (buttonIndex) {
 		case 0:
-			//take photo
+			//take photons
+			NSLog(@"take photo");
 			picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+			picker.delegate = self;
 			[self presentModalViewController:picker animated:YES];
+			[actionSheet dismissWithClickedButtonIndex:buttonIndex animated:NO];
 			break;
 		case 1:
 			//take photo from library
 			picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
 			[self presentModalViewController:picker animated:YES];
+			[actionSheet dismissWithClickedButtonIndex:buttonIndex animated:NO];
 			break;
 		case 2:
 			//cancel button
+			[actionSheet dismissWithClickedButtonIndex:buttonIndex animated:NO];
+			[myAppDelegate.wigiTabController setSelectedIndex:0];
 			break;
 		default:
 			//default same as cancel
 			break;
 	}
+	[picker release];
+	NSLog(@"hereadasdfas");
+	
 		
 }
 
@@ -111,9 +140,13 @@ WiGiAppDelegate *myAppDelegate;
  */
 -(void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
 		//dismiss modal
+	NSLog(@"in didFinishPickingMediaWithInfo");
 	[picker dismissModalViewControllerAnimated:YES];
 	self.selectedItem = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
-	
+	self.userHasSelectedItem = TRUE;
+	//[self performSelector:@selector(showAddInfoModal) withObject:nil afterDelay:0.5];
+	//[self showAddInfoModal];
 }
+
 
 @end

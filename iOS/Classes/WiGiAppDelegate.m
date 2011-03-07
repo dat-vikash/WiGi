@@ -153,7 +153,8 @@ static NSString* kAppId = @"195151467166916";
 	
 	//push view so it can be used to present modal view
 	[window addSubview:_loginModalRootView.view];
-	 [_loginModalRootView presentModalViewController:_modalLogin animated:YES];
+	[_loginModalRootView presentModalViewController:_modalLogin animated:YES];
+	
 }
 
 -(void)facebookLogin {
@@ -182,7 +183,9 @@ static NSString* kAppId = @"195151467166916";
 	self.isLoggedIn = TRUE;
 	//show wigitabcontroller
 	//[window addSubview:wigiTabController.view];
+	[_modalLogin dismissModalViewControllerAnimated:NO];
 	[window setRootViewController:wigiTabController];
+	[_loginModalRootView release];
 	
 }
 /**
