@@ -7,15 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "WiGiAppDelegate.h"
+@class WiGiAppDelegate;
 
 @interface LoginModalViewController : UIViewController {
 	UIButton *facebookLoginButton;
 	UILabel *loginAppLabel;
-		
+	WiGiAppDelegate *myAppDelegate;
 }
 @property(nonatomic, retain) IBOutlet UIButton *facebookLoginButton;
 @property(nonatomic, retain) IBOutlet UILabel *loginAppLabel;
+@property(nonatomic, retain) WiGiAppDelegate *myAppDelegate;
 
 -(IBAction)doFacebookLogin: (id) sender;
 @end

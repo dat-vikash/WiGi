@@ -7,12 +7,12 @@
 //
 
 #import "WiGiMainViewController.h"
-
-WiGiAppDelegate *myAppDelegate;
+#import "WiGiAppDelegate.h"
 
 @implementation WiGiMainViewController
 
-@synthesize headerLabel = _headerLabel, userNameLabel = _userNameLabel, facebookPicture = _facebookPicture;
+@synthesize headerLabel = _headerLabel, userNameLabel = _userNameLabel, facebookPicture = _facebookPicture,
+myAppDelegate;
 
 // UIVIEWCONTROLLER METHODS
 
@@ -33,11 +33,11 @@ WiGiAppDelegate *myAppDelegate;
 - (void)viewDidLoad {
 	NSLog(@"In viewDidLoad");
 	// get appdelicate
-	myAppDelegate = (WiGiAppDelegate*) [[UIApplication sharedApplication] delegate];	
+	self.myAppDelegate = (WiGiAppDelegate*) [[UIApplication sharedApplication] delegate];	
 	//set up view
-	[self.headerLabel setText:myAppDelegate.HEADER_TEXT];
+	[self.headerLabel setText:self.myAppDelegate.HEADER_TEXT];
 	//check if user is logged in
-	if (myAppDelegate.isLoggedIn) {
+	if (self.myAppDelegate.isLoggedIn) {
 		//user is logged in
 		NSLog(@"HERE");
 		//get facebook information to populate view
@@ -79,7 +79,7 @@ WiGiAppDelegate *myAppDelegate;
 	[_headerLabel release];
 	[_userNameLabel release];
 	[_facebookPicture release];
-	[myAppDelegate release];
+	[self.myAppDelegate release];
 	[super dealloc];
 }
 
@@ -94,8 +94,8 @@ WiGiAppDelegate *myAppDelegate;
  */
 -(void) retrieveFacebookInfoForUser {
 	NSLog(@"retrieveFacebookInfoForUser");
-	[myAppDelegate.myFacebook requestWithGraphPath:@"me" andDelegate:self];
-	[myAppDelegate.myFacebook requestWithGraphPath:@"me/picture" andDelegate:self];	
+	[self.myAppDelegate.myFacebook requestWithGraphPath:@"me" andDelegate:self];
+	[self.myAppDelegate.myFacebook requestWithGraphPath:@"me/picture" andDelegate:self];	
 	
 }
 

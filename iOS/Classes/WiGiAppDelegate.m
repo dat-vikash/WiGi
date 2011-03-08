@@ -7,7 +7,7 @@
 //
 
 #import "WiGiAppDelegate.h"
-#import "WiGiMainViewController.h"
+
 
 //global contants
 //Facebook appID needed for authorization

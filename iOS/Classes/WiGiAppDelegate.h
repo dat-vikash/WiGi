@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "WiGiMainViewController.h"
 #import "LoginModalViewController.h"
 #import "Facebook.h"
 

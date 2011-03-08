@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "WiGiAppDelegate.h"
 #import "AddInfoViewController.h"
+@class WiGiAppDelegate;
 
 @interface AddItemViewController : UIViewController<UIActionSheetDelegate,UIImagePickerControllerDelegate> {
 	UIImage *_selectedItem;

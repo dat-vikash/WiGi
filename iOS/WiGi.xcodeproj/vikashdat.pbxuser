@@ -2,17 +2,17 @@
 {
 	1D3623240D0F684500981E51 /* WiGiAppDelegate.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {959, 559}}";
-			sepNavSelRange = "{581, 0}";
-			sepNavVisRange = "{0, 993}";
+			sepNavIntBoundsRect = "{{0, 0}, {959, 546}}";
+			sepNavSelRange = "{572, 0}";
+			sepNavVisRange = "{3, 984}";
 			sepNavWindowFrame = "{{107, 131}, {750, 558}}";
 		};
 	};
 	1D3623250D0F684500981E51 /* WiGiAppDelegate.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {767, 3185}}";
-			sepNavSelRange = "{6490, 0}";
-			sepNavVisRange = "{6265, 400}";
+			sepNavIntBoundsRect = "{{0, 0}, {1965, 2951}}";
+			sepNavSelRange = "{166, 0}";
+			sepNavVisRange = "{360, 1489}";
 			sepNavWindowFrame = "{{61, 173}, {750, 558}}";
 		};
 	};
@@ -183,6 +183,15 @@
 			C0D2F0E21326822900A3805D /* PBXTextBookmark */ = C0D2F0E21326822900A3805D /* PBXTextBookmark */;
 			C0D2F0E31326822900A3805D /* PBXTextBookmark */ = C0D2F0E31326822900A3805D /* PBXTextBookmark */;
 			C0D2F0E41326822900A3805D /* PBXTextBookmark */ = C0D2F0E41326822900A3805D /* PBXTextBookmark */;
+			C0D2F0E7132683CD00A3805D /* PBXTextBookmark */ = C0D2F0E7132683CD00A3805D /* PBXTextBookmark */;
+			C0D2F0E8132683CD00A3805D /* XCBuildMessageTextBookmark */ = C0D2F0E8132683CD00A3805D /* XCBuildMessageTextBookmark */;
+			C0D2F0E9132683CD00A3805D /* PBXTextBookmark */ = C0D2F0E9132683CD00A3805D /* PBXTextBookmark */;
+			C0D2F0F41326864100A3805D /* PBXTextBookmark */ = C0D2F0F41326864100A3805D /* PBXTextBookmark */;
+			C0D2F0F51326864100A3805D /* XCBuildMessageTextBookmark */ = C0D2F0F51326864100A3805D /* XCBuildMessageTextBookmark */;
+			C0D2F0F61326864100A3805D /* PBXTextBookmark */ = C0D2F0F61326864100A3805D /* PBXTextBookmark */;
+			C0D2F1061326895400A3805D /* PBXTextBookmark */ = C0D2F1061326895400A3805D /* PBXTextBookmark */;
+			C0D2F1071326895400A3805D /* XCBuildMessageTextBookmark */ = C0D2F1071326895400A3805D /* XCBuildMessageTextBookmark */;
+			C0D2F1081326895400A3805D /* PBXTextBookmark */ = C0D2F1081326895400A3805D /* PBXTextBookmark */;
 		};
 		sourceControlManager = C007D883130C544F00A2965A /* Source Control */;
 		userBuildSettings = {
@@ -209,7 +218,7 @@
 		argumentStrings = (
 		);
 		autoAttachOnCrash = 1;
-		breakpointsEnabled = 1;
+		breakpointsEnabled = 0;
 		configStateDict = {
 		};
 		customDataFormattersEnabled = 1;
@@ -290,16 +299,16 @@
 	};
 	C007D945130D7C4900A2965A /* WiGiMainViewController.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {959, 507}}";
-			sepNavSelRange = "{190, 27}";
-			sepNavVisRange = "{0, 611}";
+			sepNavIntBoundsRect = "{{0, 0}, {959, 530}}";
+			sepNavSelRange = "{197, 0}";
+			sepNavVisRange = "{0, 705}";
 		};
 	};
 	C007D946130D7C4900A2965A /* WiGiMainViewController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {959, 2015}}";
-			sepNavSelRange = "{1903, 0}";
-			sepNavVisRange = "{1539, 902}";
+			sepNavIntBoundsRect = "{{0, 0}, {959, 2041}}";
+			sepNavSelRange = "{207, 0}";
+			sepNavVisRange = "{0, 1048}";
 			sepNavWindowFrame = "{{153, 89}, {750, 558}}";
 		};
 	};
@@ -387,17 +396,17 @@
 	};
 	C0D2EE57131DFEB400A3805D /* LoginModalViewController.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {959, 533}}";
-			sepNavSelRange = "{210, 24}";
-			sepNavVisRange = "{0, 496}";
+			sepNavIntBoundsRect = "{{0, 0}, {959, 530}}";
+			sepNavSelRange = "{193, 0}";
+			sepNavVisRange = "{0, 583}";
 			sepNavWindowFrame = "{{15, 215}, {750, 558}}";
 		};
 	};
 	C0D2EE58131DFEB400A3805D /* LoginModalViewController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1139, 949}}";
-			sepNavSelRange = "{1801, 0}";
-			sepNavVisRange = "{0, 1281}";
+			sepNavIntBoundsRect = "{{0, 0}, {1139, 936}}";
+			sepNavSelRange = "{210, 0}";
+			sepNavVisRange = "{992, 943}";
 		};
 	};
 	C0D2EE75131E044300A3805D /* PBXTextBookmark */ = {
@@ -424,15 +433,15 @@
 	C0D2EEAB131E993B00A3805D /* AddItemViewController.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {959, 530}}";
-			sepNavSelRange = "{586, 0}";
-			sepNavVisRange = "{0, 592}";
+			sepNavSelRange = "{224, 0}";
+			sepNavVisRange = "{0, 588}";
 		};
 	};
 	C0D2EEAC131E993B00A3805D /* AddItemViewController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1139, 2106}}";
-			sepNavSelRange = "{2564, 0}";
-			sepNavVisRange = "{2038, 1209}";
+			sepNavIntBoundsRect = "{{0, 0}, {1139, 2171}}";
+			sepNavSelRange = "{303, 13}";
+			sepNavVisRange = "{0, 1260}";
 		};
 	};
 	C0D2EEF4132531FC00A3805D /* PBXBookmark */ = {
@@ -444,7 +453,7 @@
 		fRef = 1D3623240D0F684500981E51 /* WiGiAppDelegate.h */;
 		name = "WiGiAppDelegate.h: 18";
 		rLen = 19;
-		rLoc = 449;
+		rLoc = 414;
 		rType = 0;
 		vrLen = 1021;
 		vrLoc = 0;
@@ -454,7 +463,7 @@
 		fRef = C0D2EE58131DFEB400A3805D /* LoginModalViewController.m */;
 		name = "LoginModalViewController.m: 63";
 		rLen = 0;
-		rLoc = 1801;
+		rLoc = 1821;
 		rType = 0;
 		vrLen = 955;
 		vrLoc = 955;
@@ -464,7 +473,7 @@
 		fRef = C0D2EE57131DFEB400A3805D /* LoginModalViewController.h */;
 		name = "LoginModalViewController.h: 12";
 		rLen = 24;
-		rLoc = 210;
+		rLoc = 206;
 		rType = 0;
 		vrLen = 496;
 		vrLoc = 0;
@@ -474,7 +483,7 @@
 		fRef = C007D945130D7C4900A2965A /* WiGiMainViewController.h */;
 		name = "WiGiMainViewController.h: 11";
 		rLen = 0;
-		rLoc = 217;
+		rLoc = 214;
 		rType = 0;
 		vrLen = 611;
 		vrLoc = 0;
@@ -483,8 +492,8 @@
 		isa = PBXTextBookmark;
 		fRef = C007D946130D7C4900A2965A /* WiGiMainViewController.m */;
 		name = "WiGiMainViewController.m: 35";
-		rLen = 100;
-		rLoc = 766;
+		rLen = 105;
+		rLoc = 776;
 		rType = 0;
 		vrLen = 1102;
 		vrLoc = 363;
@@ -494,7 +503,7 @@
 		fRef = C0D2EEAB131E993B00A3805D /* AddItemViewController.h */;
 		name = "AddItemViewController.h: 10";
 		rLen = 0;
-		rLoc = 194;
+		rLoc = 166;
 		rType = 0;
 		vrLen = 392;
 		vrLoc = 0;
@@ -514,7 +523,7 @@
 		fRef = 1D3623250D0F684500981E51 /* WiGiAppDelegate.m */;
 		name = "WiGiAppDelegate.m: 54";
 		rLen = 0;
-		rLoc = 1675;
+		rLoc = 1641;
 		rType = 0;
 		vrLen = 891;
 		vrLoc = 5737;
@@ -524,7 +533,7 @@
 		fRef = 1D3623250D0F684500981E51 /* WiGiAppDelegate.m */;
 		name = "WiGiAppDelegate.m: 55";
 		rLen = 0;
-		rLoc = 1700;
+		rLoc = 1666;
 		rType = 0;
 		vrLen = 1395;
 		vrLoc = 490;
@@ -533,7 +542,7 @@
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {959, 533}}";
 			sepNavSelRange = "{194, 0}";
-			sepNavVisRange = "{0, 1233}";
+			sepNavVisRange = "{0, 1238}";
 			sepNavWindowFrame = "{{38, 194}, {750, 558}}";
 		};
 	};
@@ -541,7 +550,7 @@
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1139, 1235}}";
 			sepNavSelRange = "{2264, 0}";
-			sepNavVisRange = "{1603, 694}";
+			sepNavVisRange = "{1576, 721}";
 		};
 	};
 	C0D2EFE21325D80600A3805D /* XCBuildMessageTextBookmark */ = {
@@ -567,8 +576,8 @@
 		isa = PBXTextBookmark;
 		fRef = C007D945130D7C4900A2965A /* WiGiMainViewController.h */;
 		name = "WiGiMainViewController.h: 11";
-		rLen = 27;
-		rLoc = 190;
+		rLen = 0;
+		rLoc = 214;
 		rType = 0;
 		vrLen = 611;
 		vrLoc = 0;
@@ -578,7 +587,7 @@
 		fRef = 1D3623250D0F684500981E51 /* WiGiAppDelegate.m */;
 		name = "WiGiAppDelegate.m: 41";
 		rLen = 0;
-		rLoc = 1025;
+		rLoc = 991;
 		rType = 0;
 		vrLen = 1423;
 		vrLoc = 852;
@@ -588,7 +597,7 @@
 		fRef = 1D3623240D0F684500981E51 /* WiGiAppDelegate.h */;
 		name = "WiGiAppDelegate.h: 18";
 		rLen = 19;
-		rLoc = 449;
+		rLoc = 414;
 		rType = 0;
 		vrLen = 1022;
 		vrLoc = 0;
@@ -598,7 +607,7 @@
 		fRef = C007D946130D7C4900A2965A /* WiGiMainViewController.m */;
 		name = "WiGiMainViewController.m: 135";
 		rLen = 0;
-		rLoc = 3693;
+		rLoc = 3733;
 		rType = 0;
 		vrLen = 1340;
 		vrLoc = 2766;
@@ -628,7 +637,7 @@
 		fRef = C0D2EEAB131E993B00A3805D /* AddItemViewController.h */;
 		name = "AddItemViewController.h: 20";
 		rLen = 0;
-		rLoc = 586;
+		rLoc = 582;
 		rType = 0;
 		vrLen = 574;
 		vrLoc = 0;
@@ -694,7 +703,7 @@
 		fRef = C0D2EEAB131E993B00A3805D /* AddItemViewController.h */;
 		name = "AddItemViewController.h: 15";
 		rLen = 0;
-		rLoc = 424;
+		rLoc = 420;
 		rType = 0;
 		vrLen = 498;
 		vrLoc = 0;
@@ -744,7 +753,7 @@
 		fRef = C0D2EEAB131E993B00A3805D /* AddItemViewController.h */;
 		name = "AddItemViewController.h: 15";
 		rLen = 0;
-		rLoc = 424;
+		rLoc = 420;
 		rType = 0;
 		vrLen = 498;
 		vrLoc = 0;
@@ -803,8 +812,8 @@
 		isa = PBXTextBookmark;
 		fRef = C007D946130D7C4900A2965A /* WiGiMainViewController.m */;
 		name = "WiGiMainViewController.m: 35";
-		rLen = 100;
-		rLoc = 766;
+		rLen = 105;
+		rLoc = 776;
 		rType = 0;
 		vrLen = 1225;
 		vrLoc = 622;
@@ -814,7 +823,7 @@
 		fRef = C0D2EEAB131E993B00A3805D /* AddItemViewController.h */;
 		name = "AddItemViewController.h: 15";
 		rLen = 0;
-		rLoc = 424;
+		rLoc = 420;
 		rType = 0;
 		vrLen = 498;
 		vrLoc = 0;
@@ -975,7 +984,7 @@
 		fRef = C0D2EE58131DFEB400A3805D /* LoginModalViewController.m */;
 		name = "LoginModalViewController.m: 63";
 		rLen = 0;
-		rLoc = 1801;
+		rLoc = 1821;
 		rType = 0;
 		vrLen = 1281;
 		vrLoc = 0;
@@ -985,7 +994,7 @@
 		fRef = C0D2EEAB131E993B00A3805D /* AddItemViewController.h */;
 		name = "AddItemViewController.h: 20";
 		rLen = 0;
-		rLoc = 586;
+		rLoc = 582;
 		rType = 0;
 		vrLen = 592;
 		vrLoc = 0;
@@ -995,7 +1004,7 @@
 		fRef = 1D3623240D0F684500981E51 /* WiGiAppDelegate.h */;
 		name = "WiGiAppDelegate.h: 24";
 		rLen = 0;
-		rLoc = 581;
+		rLoc = 546;
 		rType = 0;
 		vrLen = 993;
 		vrLoc = 0;
@@ -1004,8 +1013,8 @@
 		isa = PBXTextBookmark;
 		fRef = C007D945130D7C4900A2965A /* WiGiMainViewController.h */;
 		name = "WiGiMainViewController.h: 11";
-		rLen = 27;
-		rLoc = 190;
+		rLen = 0;
+		rLoc = 214;
 		rType = 0;
 		vrLen = 611;
 		vrLoc = 0;
@@ -1015,7 +1024,7 @@
 		fRef = C007D946130D7C4900A2965A /* WiGiMainViewController.m */;
 		name = "WiGiMainViewController.m: 78";
 		rLen = 0;
-		rLoc = 1903;
+		rLoc = 1928;
 		rType = 0;
 		vrLen = 902;
 		vrLoc = 1539;
@@ -1025,7 +1034,7 @@
 		fRef = 1D3623250D0F684500981E51 /* WiGiAppDelegate.m */;
 		name = "WiGiAppDelegate.m: 216";
 		rLen = 0;
-		rLoc = 6490;
+		rLoc = 6456;
 		rType = 0;
 		vrLen = 792;
 		vrLoc = 5924;
@@ -1069,5 +1078,92 @@
 		rType = 0;
 		vrLen = 694;
 		vrLoc = 1603;
+	};
+	C0D2F0E7132683CD00A3805D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C0D2EF0E1325389800A3805D /* AddInfoViewController.m */;
+		name = "AddInfoViewController.m: 33";
+		rLen = 0;
+		rLoc = 982;
+		rType = 0;
+		vrLen = 517;
+		vrLoc = 828;
+	};
+	C0D2F0E8132683CD00A3805D /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "Expected specifier-qualifier-list before 'WiGiAppDelegate'";
+		fRef = C007D945130D7C4900A2965A /* WiGiMainViewController.h */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 20;
+		rType = 1;
+	};
+	C0D2F0E9132683CD00A3805D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C007D945130D7C4900A2965A /* WiGiMainViewController.h */;
+		name = "WiGiMainViewController.h: 19";
+		rLen = 0;
+		rLoc = 414;
+		rType = 0;
+		vrLen = 413;
+		vrLoc = 293;
+	};
+	C0D2F0F41326864100A3805D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C007D945130D7C4900A2965A /* WiGiMainViewController.h */;
+		name = "WiGiMainViewController.h: 21";
+		rLen = 0;
+		rLoc = 414;
+		rType = 0;
+		vrLen = 463;
+		vrLoc = 219;
+	};
+	C0D2F0F51326864100A3805D /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "Return makes integer from pointer without a cast";
+		fRef = 1D3623250D0F684500981E51 /* WiGiAppDelegate.m */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 32;
+		rType = 1;
+	};
+	C0D2F0F61326864100A3805D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* WiGiAppDelegate.m */;
+		name = "WiGiAppDelegate.m: 33";
+		rLen = 0;
+		rLoc = 818;
+		rType = 0;
+		vrLen = 456;
+		vrLoc = 532;
+	};
+	C0D2F1061326895400A3805D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* WiGiAppDelegate.m */;
+		name = "WiGiAppDelegate.m: 33";
+		rLen = 0;
+		rLoc = 818;
+		rType = 0;
+		vrLen = 456;
+		vrLoc = 532;
+	};
+	C0D2F1071326895400A3805D /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "Accessing unknown 'HEADER_TEXT' component of a property";
+		fRef = C007D946130D7C4900A2965A /* WiGiMainViewController.m */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 37;
+		rType = 1;
+	};
+	C0D2F1081326895400A3805D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C007D946130D7C4900A2965A /* WiGiMainViewController.m */;
+		name = "WiGiMainViewController.m: 37";
+		rLen = 0;
+		rLoc = 898;
+		rType = 0;
+		vrLen = 438;
+		vrLoc = 600;
 	};
 }

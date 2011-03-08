@@ -7,18 +7,17 @@
 //
 
 #import "LoginModalViewController.h"
-
-WiGiAppDelegate *myAppDelegate;
+#import "WiGiAppDelegate.h"
 
 @implementation LoginModalViewController
-@synthesize facebookLoginButton, loginAppLabel;
+@synthesize facebookLoginButton, loginAppLabel, myAppDelegate;
 
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
 	NSLog(@"in loginmodalviewcontroller initiwithnibname");
 	//get appDelegate
-	myAppDelegate = (WiGiAppDelegate*) [[UIApplication sharedApplication] delegate];	
+	self.myAppDelegate = (WiGiAppDelegate*) [[UIApplication sharedApplication] delegate];	
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization.
@@ -60,13 +59,13 @@ WiGiAppDelegate *myAppDelegate;
 - (void)dealloc {
 	[loginAppLabel release];
 	[facebookLoginButton release];
-	[myAppDelegate release];
+	[self.myAppDelegate release];
     [super dealloc];
 }
 
 
 -(IBAction) doFacebookLogin: (id) sender {
-	[myAppDelegate facebookLogin];
+	[self.myAppDelegate facebookLogin];
 }
 
 @end
