@@ -8,9 +8,9 @@
 
 #import "AddItemViewController.h"
 
-WiGiAppDelegate *myAppDelegate;
+
 @implementation AddItemViewController
-@synthesize selectedItem = _selectedItem, userHasSelectedItem = _userHasSelectedItem;
+@synthesize selectedItem = _selectedItem, userHasSelectedItem = _userHasSelectedItem, myAppDelegate;
 
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 
@@ -30,7 +30,7 @@ WiGiAppDelegate *myAppDelegate;
 - (void)viewDidLoad {
 	NSLog(@"additemviewcontroller viewdidload");
 	// get appdelicate
-	myAppDelegate = (WiGiAppDelegate*) [[UIApplication sharedApplication] delegate];
+	self.myAppDelegate = (WiGiAppDelegate*) [[UIApplication sharedApplication] delegate];
     [super viewDidLoad];
 }
 
@@ -38,8 +38,10 @@ WiGiAppDelegate *myAppDelegate;
 	NSLog(@"in viewdidAppear");
 	[super viewWillAppear:animated];
 	if (self.userHasSelectedItem) {
+		NSLog(@"about to show modal");
 		[self showAddInfoModal];	
 	}else {
+		NSLog(@"about to show actionsheet");
 		//show actionsheet with add item options
 		[self showItemOptionsActionSheet];		
 	}
@@ -77,7 +79,7 @@ WiGiAppDelegate *myAppDelegate;
 - (void)dealloc {
 	NSLog(@"IN DEALLOC");
 	[_selectedItem release];
-	[myAppDelegate release];
+	[self.myAppDelegate release];
     [super dealloc];
 }
 
@@ -86,7 +88,7 @@ WiGiAppDelegate *myAppDelegate;
 	UIActionSheet *popupItemOptions = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil 
 														 otherButtonTitles:@"Take Photo",@"Choose from Library", nil];
 	popupItemOptions.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
-	[popupItemOptions showFromTabBar:myAppDelegate.wigiTabController.view];
+	[popupItemOptions showFromTabBar: self.myAppDelegate.wigiTabController.view];
 	[popupItemOptions release];
 	
 }
@@ -97,6 +99,8 @@ WiGiAppDelegate *myAppDelegate;
 	addItemViewController.itemImage = self.selectedItem;
 	[self presentModalViewController:addItemViewController animated:YES];
 	[addItemViewController release];
+	//result item flag
+	self.userHasSelectedItem = FALSE;
 }
 
 /* UIActionSheetDelegate methods 
@@ -124,7 +128,7 @@ WiGiAppDelegate *myAppDelegate;
 		case 2:
 			//cancel button
 			[actionSheet dismissWithClickedButtonIndex:buttonIndex animated:NO];
-			[myAppDelegate.wigiTabController setSelectedIndex:0];
+			[self.myAppDelegate.wigiTabController setSelectedIndex:0];
 			break;
 		default:
 			//default same as cancel

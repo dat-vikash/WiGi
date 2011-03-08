@@ -13,7 +13,9 @@
 @interface AddItemViewController : UIViewController<UIActionSheetDelegate,UIImagePickerControllerDelegate> {
 	UIImage *_selectedItem;
 	BOOL _userHasSelectedItem;
+	WiGiAppDelegate *myAppDelegate;
 }
 @property(nonatomic, retain) UIImage *selectedItem;
 @property(nonatomic) BOOL userHasSelectedItem;
+@property(nonatomic, retain) WiGiAppDelegate *myAppDelegate;
 @end

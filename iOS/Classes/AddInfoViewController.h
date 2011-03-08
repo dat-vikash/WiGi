@@ -33,4 +33,8 @@
 @property (nonatomic, retain) IBOutlet UITextField *itemComments;
 @property (nonatomic, retain) IBOutlet UILabel *headerLabel;
 
+-(IBAction) doneEditingDismissKeyboard: (id) sender;
+-(IBAction) cancelItemSubmission: (id) sender;
+-(IBAction) submitItem: (id) sender;
+
 @end

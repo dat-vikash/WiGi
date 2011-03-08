@@ -213,6 +213,7 @@ static NSString* kAppId = @"195151467166916";
 
 
 - (void)dealloc {
+
     [self.window release];
 	[self.wigiTabController release];
 	[_myFacebook release];

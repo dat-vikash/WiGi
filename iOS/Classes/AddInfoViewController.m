@@ -8,7 +8,6 @@
 
 #import "AddInfoViewController.h"
 
-WiGiAppDelegate *myAppDelegate;
 
 @implementation AddInfoViewController
 
@@ -57,6 +56,24 @@ itemComments, headerLabel = _headerLabel, itemImage=_itemImage;
     // e.g. self.myOutlet = nil;
 }
 
+-(IBAction)doneEditingDismissKeyboard: (id) sender {
+	
+	[sender resignFirstResponder];
+}
+
+-(IBAction)cancelItemSubmission: (id) sender{
+	[self dismissModalViewControllerAnimated:YES];
+	//[myAppDelegate.wigiTabController setSelectedIndex:2];
+	//[self dealloc];
+}
+
+
+-(IBAction) submitItem: (id) sender{
+	
+	
+}
+
+
 
 - (void)dealloc {
 	
@@ -69,7 +86,6 @@ itemComments, headerLabel = _headerLabel, itemImage=_itemImage;
 	[itemTags release];
 	[itemComments release];
 	[_headerLabel release];
-	[myAppDelegate release];
 	
     [super dealloc];
 }
