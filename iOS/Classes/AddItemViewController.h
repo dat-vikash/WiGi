@@ -16,5 +16,4 @@
 }
 @property(nonatomic, retain) UIImage *selectedItem;
 @property(nonatomic) BOOL userHasSelectedItem;
-
 @end

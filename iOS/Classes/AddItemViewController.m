@@ -94,7 +94,7 @@ WiGiAppDelegate *myAppDelegate;
 -(void)showAddInfoModal {
 	NSLog(@"in showAddInfoModal");
 	AddInfoViewController *addItemViewController = [[AddInfoViewController alloc] init];
-	addItemViewController.itemImage.image = self.selectedItem;
+	addItemViewController.itemImage = self.selectedItem;
 	[self presentModalViewController:addItemViewController animated:YES];
 	[addItemViewController release];
 }

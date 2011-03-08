@@ -69,8 +69,12 @@
 					<object class="IBUIButton" id="1000911428">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{8, 7}, {55, 20}}</string>
+						<string key="NSFrame">{{8, 3}, {63, 27}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
+						<object class="NSColor" key="IBUIBackgroundColor">
+							<int key="NSColorSpace">1</int>
+							<bytes key="NSRGB">MC40MjkzNDc4MjYxIDAuNDI5MzQ3ODI2MSAwLjQyOTM0NzgyNjEAA</bytes>
+						</object>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
@@ -95,7 +99,7 @@
 					<object class="IBUIImageView" id="365300118">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{8, 55}, {112, 112}}</string>
+						<string key="NSFrame">{{8, 55}, {112, 118}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -255,14 +259,6 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">itemImage</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="365300118"/>
-					</object>
-					<int key="connectionID">14</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">cancelButton</string>
 						<reference key="source" ref="372490531"/>
 						<reference key="destination" ref="1000911428"/>
@@ -317,6 +313,14 @@
 					</object>
 					<int key="connectionID">21</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">itemImageView</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="365300118"/>
+					</object>
+					<int key="connectionID">24</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -333,7 +337,6 @@
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="511330178"/>
-							<reference ref="1000911428"/>
 							<reference ref="365300118"/>
 							<reference ref="65852831"/>
 							<reference ref="130966704"/>
@@ -342,6 +345,7 @@
 							<reference ref="146354755"/>
 							<reference ref="615087827"/>
 							<reference ref="754026303"/>
+							<reference ref="1000911428"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -439,7 +443,7 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>AddInfoViewController</string>
 					<string>UIResponder</string>
-					<string>{{411, 250}, {320, 480}}</string>
+					<string>{{333, 250}, {320, 480}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
@@ -460,7 +464,7 @@
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAAAAAAAAwcgAAA</bytes>
+						<bytes key="NSTransformStruct">P4AAAL+AAAAAAAAAwegAAA</bytes>
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
@@ -493,7 +497,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">21</int>
+			<int key="maxID">24</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -508,7 +512,7 @@
 							<string>cancelButton</string>
 							<string>headerLabel</string>
 							<string>itemComments</string>
-							<string>itemImage</string>
+							<string>itemImageView</string>
 							<string>itemTags</string>
 							<string>shareWithFacebookButton</string>
 							<string>shareWithFriendsSwitch</string>
@@ -533,7 +537,7 @@
 							<string>cancelButton</string>
 							<string>headerLabel</string>
 							<string>itemComments</string>
-							<string>itemImage</string>
+							<string>itemImageView</string>
 							<string>itemTags</string>
 							<string>shareWithFacebookButton</string>
 							<string>shareWithFriendsSwitch</string>
@@ -554,7 +558,7 @@
 								<string key="candidateClassName">UITextField</string>
 							</object>
 							<object class="IBToOneOutletInfo">
-								<string key="name">itemImage</string>
+								<string key="name">itemImageView</string>
 								<string key="candidateClassName">UIImageView</string>
 							</object>
 							<object class="IBToOneOutletInfo">

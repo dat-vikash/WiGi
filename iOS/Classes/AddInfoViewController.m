@@ -12,12 +12,13 @@ WiGiAppDelegate *myAppDelegate;
 
 @implementation AddInfoViewController
 
-@synthesize cancelButton, shareWithFriendsSwitch, shareWithFacebookButton, submitButton, itemImage, itemTags,
-itemComments, headerLabel = _headerLabel;
+@synthesize cancelButton, shareWithFriendsSwitch, shareWithFacebookButton, submitButton, itemImageView, itemTags,
+itemComments, headerLabel = _headerLabel, itemImage=_itemImage;
 
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+	NSLog(@"in init with nib add info");
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization.
@@ -29,6 +30,8 @@ itemComments, headerLabel = _headerLabel;
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
+	NSLog(@"in viewdidload addinfo");
+	self.itemImageView.image = self.itemImage;
     [super viewDidLoad];
 }
 
@@ -61,7 +64,8 @@ itemComments, headerLabel = _headerLabel;
 	[shareWithFacebookButton release];
 	[submitButton release];
 	[shareWithFriendsSwitch release];
-	[itemImage release];
+	[itemImageView release];
+	[_itemImage release];
 	[itemTags release];
 	[itemComments release];
 	[_headerLabel release];

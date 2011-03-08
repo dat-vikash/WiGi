@@ -132,6 +132,7 @@ WiGiAppDelegate *myAppDelegate;
 		//setimage 
 		UIImage *img = [[UIImage alloc] initWithData: result];
 		[self.facebookPicture setImage:img];
+		[img release];
 	
 	}
 	if ([result isKindOfClass:[NSDictionary class]]) {

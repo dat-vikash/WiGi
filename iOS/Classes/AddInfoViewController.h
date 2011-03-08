@@ -15,7 +15,8 @@
 	UIButton *shareWithFacebookButton;
 	UIButton *submitButton;
 	UISwitch *shareWithFriendsSwitch;
-	UIImageView *itemImage;
+	UIImageView *itemImageView;
+	UIImage *_itemImage;
 	UITextField *itemTags;
 	UITextField *itemComments;
 	UILabel *_headerLabel;
@@ -26,7 +27,8 @@
 @property (nonatomic, retain) IBOutlet UIButton *shareWithFacebookButton;
 @property (nonatomic, retain) IBOutlet UIButton *submitButton;
 @property (nonatomic, retain) IBOutlet UISwitch *shareWithFriendsSwitch;
-@property (nonatomic, retain) IBOutlet UIImageView *itemImage;
+@property (nonatomic, retain) IBOutlet UIImageView *itemImageView;
+@property (nonatomic, retain) UIImage *itemImage;
 @property (nonatomic, retain) IBOutlet UITextField *itemTags;
 @property (nonatomic, retain) IBOutlet UITextField *itemComments;
 @property (nonatomic, retain) IBOutlet UILabel *headerLabel;
