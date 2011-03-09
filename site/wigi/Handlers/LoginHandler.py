@@ -29,14 +29,16 @@ class LoginHandler(BaseHandler, tornado.auth.FacebookGraphMixin):
 
     def post(self):
         #get login agruments. Arguments include facebook accessToken, expiration date, and user fb_id
+        from wigi.models.models import User
         assert(self.get_argument("wigi_accessToken"))
 	assert(self.get_argument("wigi_expr_token"))
-	assert(self.get_agrument("wigi_fb_id"))
+	assert(self.get_argument("wigi_fb_id"))
 	
 	#check if user exists
-        #usernamerg.getuserforid()
-        pass
-
+        if(User.doesUserExist(int(self.get_argument("wigi_fb_id")))):
+	    self.write("user exists")
+        else:
+           self.write("user doesn't exist")
 
     def _on_login(self, user):
         logging.info("USER INFO:")
