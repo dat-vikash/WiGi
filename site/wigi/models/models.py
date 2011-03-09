@@ -27,7 +27,10 @@ class DBManager(object):
     
     def getSession(self):
         """ returns the global session object. """
-	return self.Session()
+	if self.engine:
+	    print "engine exists...returning session"
+	    return self.Session()
+
 
     def getId(self):
         return id(self)
@@ -63,9 +66,9 @@ class User(Base):
     @classmethod
     def doesUserExist(self, fb_id):
         """Checks to see if users exists based on facebook_id"""
+        from wigi import DbMan
 	try:
-	    dbconn = DBManager()
-            session = dbconn.getSession()
+            session = DbMan.getSession()
             user = session.query(User).filter_by(facebook_id=fb_id).first()
             session.close()
             return True if user else False
