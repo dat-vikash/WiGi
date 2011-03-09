@@ -27,19 +27,6 @@ class LoginHandler(BaseHandler, tornado.auth.FacebookGraphMixin):
                                 extra_params={"scope": site_config.get('wigi','facebook_permissions_scope'),
                                               "display":"popup"})	    	
 
-    def post(self):
-        #get login agruments. Arguments include facebook accessToken, expiration date, and user fb_id
-        from wigi.models.models import User
-        assert(self.get_argument("wigi_accessToken"))
-	assert(self.get_argument("wigi_expr_token"))
-	assert(self.get_argument("wigi_fb_id"))
-	
-	#check if user exists
-        if(User.doesUserExist(int(self.get_argument("wigi_fb_id")))):
-	    self.write("user exists")
-        else:
-           self.write("user doesn't exist")
-
     def _on_login(self, user):
         logging.info("USER INFO:")
         logging.error(user)
@@ -47,3 +34,22 @@ class LoginHandler(BaseHandler, tornado.auth.FacebookGraphMixin):
         #self.write("<html><head></head> <body onunload='window.opener.location.reload();'> <script type='text/javascript'> self.close(); </script></body></html>")
         self.redirect("/") 
         #self.finish()
+
+
+    def post(self):
+        #get login agruments. Arguments include facebook accessToken, expiration date, and user fb_id
+        from wigi.models.models import User
+        assert(self.get_argument("wigi_accessToken"))
+        assert(self.get_argument("wigi_expr_token"))
+        assert(self.get_argument("wigi_fb_id"))
+
+        #check if user exists
+        if(User.doesUserExist(int(self.get_argument("wigi_fb_id")))):
+            self.write("user exists")
+        else:
+           self.write("user doesn't exist")
+
+        #if user exists, check accesstoken
+        #if accesstoken matches, create 
+
+

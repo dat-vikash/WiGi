@@ -1,4 +1,4 @@
-print "in __init__"
+print "Starting wigi server"
 from wigi.models.models import DBManager, User
 #create a DBManger instance
 DbMan = DBManager()

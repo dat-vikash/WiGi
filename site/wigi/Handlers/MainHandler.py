@@ -12,18 +12,22 @@ from wigi.conf.config import getConfiguration
 site_config = getConfiguration()
 
 class MainHandler(BaseHandler,tornado.auth.FacebookGraphMixin):
-    
+    @tornado.web.asynchronous
     def get(self):
         if not self.current_user:
             self.render("index.html", login_status='false')
         else:
-            self.render("index.html", login_status='true')
+            print self.current_user
+            self.facebook_request("/me",
+				access_token=self.current_user["access_token"],
+				callback=self.async_callback(self.__on_user_info_get))
 
+    def __on_user_info_get(self, userInfo):
+        print userInfo
+	#update user info
+	self.current_user['name']=userInfo['name']
+        self.render("index.html", login_status='true')
 
-class MainHandler2(BaseHandler,tornado.auth.FacebookGraphMixin):
-    
-    def get(self):
-	self.render("test.html", login_status='true')
 
 
 class TestHandler(BaseHandler, tornado.auth.FacebookGraphMixin):
