@@ -1,1 +1,5 @@
+build
+dist
+wigi.egg-info
 *.pyc
+
