@@ -36,20 +36,42 @@ class LoginHandler(BaseHandler, tornado.auth.FacebookGraphMixin):
         #self.finish()
 
 
+    @tornado.web.asynchronous
     def post(self):
         #get login agruments. Arguments include facebook accessToken, expiration date, and user fb_id
-        from wigi.models.models import User
+        from wigi.models.models import User, WigiTokens
         assert(self.get_argument("wigi_accessToken"))
         assert(self.get_argument("wigi_expr_token"))
         assert(self.get_argument("wigi_fb_id"))
 
         #check if user exists
         if(User.doesUserExist(int(self.get_argument("wigi_fb_id")))):
-            self.write("user exists")
+            #if user exists, check accesstoken
+	    user = User.getUserForFbId(int(self.get_argument("wigi_fb_id")))
+	    if user.access_token == self.get_argument("wigi_accessToken"):
+	        print "user's accesstoken matches"
+        	#if accesstoken matches, create secure wigi token and write to reponse
+                userToken = WigiTokens.createNewToken(user)
+	        self.write(userToken.wigi_token)
+            else:
+                self.write("access tokens do not match")
         else:
-           self.write("user doesn't exist")
-
-        #if user exists, check accesstoken
-        #if accesstoken matches, create 
-
-
+           print "user doesn't exist"
+	   #if user doesn't exist, determine if accesstoken is valid and create user, then create wigi token and write to response
+           self.accessToken = self.get_argument("wigi_accessToken")
+	   self.facebook_request("/me",
+                                access_token=self.get_argument("wigi_accessToken"),
+                                callback=self.async_callback(self.__is_access_token_valid))
+	   
+    def __is_access_token_valid(self,response):
+        if not response:
+            print "here"
+	    #invalid access token
+	    self.finish('invalid access token')
+            return
+        else:
+            #create user and wigi token, write token to response
+            #verify user is who they say they are
+            if(response.get('id') == self.get_argument('wigi_fb_id')):
+	        print "creating new user id: %s token: %s" %(response.get('id'), self.get_argument('wigi_accessToken'))
+            #newUser = User.createNewUser(int(response['id']), self.accessToken)
