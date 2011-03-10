@@ -55,7 +55,49 @@ static NSString* wigiBaseURL = @"http://ec2-50-17-86-253.compute-1.amazonaws.com
 -(void) submitNewWigiItem: (id) item forUserWithId: (NSString*) wigi_id WithFbId: (NSString *) fb_id withWigiAccessToken: (NSString *) access_token{
 	NSLog(@"in submitNewWigiItem");
 	//setup url
-//	NSURL *wigiItemURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@/items",wigiBaseURL,fb_id
+	NSURL *wigiURL = [[NSURL alloc] initWithString:[NSString stringWithFormat:@"%@%@/items",wigiBaseURL,wigi_id]];
+	//setup request for add item
+	NSMutableURLRequest *wigiRequest = [[NSMutableURLRequest alloc] initWithURL:wigiURL cachePolicy:NSURLRequestReloadIgnoringCacheData
+																timeoutInterval:10];
+	[wigiRequest setHTTPMethod:@"POST"];
+	
+	//define post boundary
+	NSString *boundary = [[NSString alloc] initWithString: [[NSProcessInfo processInfo] globallyUniqueString]];
+	NSString *boundaryString = [[NSString alloc] initWithString:[NSString stringWithFormat:@"multipart/form-data;boundary=%@",boundary]];
+	[wigiRequest addValue:boundaryString forHTTPHeaderField:@"Content-Type"];
+	
+	//define boundary seperator
+	NSString *boundarySeparator = [[NSString alloc] initWithString: [NSString stringWithFormat:@"--%@\r\n",boundary]];
+	
+	//add body
+	NSMutableData *postBody = [NSMutableData data];
+	
+	//add params
+	//wigi access token
+	[postBody appendData:[boundarySeparator dataUsingEncoding:NSUTF8StringEncoding]]; 
+	NSLog(@"postbody set");
+	[postBody appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n", @"wigi_access_token"] dataUsingEncoding:NSUTF8StringEncoding]];
+	NSLog(@"123post");
+	[postBody appendData:[[NSString stringWithFormat:@"%@\r\n", access_token] dataUsingEncoding:NSUTF8StringEncoding]];
+	
+	//facebook id
+	[postBody appendData:[boundarySeparator dataUsingEncoding:NSUTF8StringEncoding]]; 
+	[postBody appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n", @"wigi_facebook_id"] dataUsingEncoding:NSUTF8StringEncoding]];
+	[postBody appendData:[[NSString stringWithFormat:@"%@\r\n", fb_id] dataUsingEncoding:NSUTF8StringEncoding]];
+	
+	//image
+	
+	//end post data
+	[postBody appendData:[[NSString stringWithFormat:@"\r\n--%@--\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+	[wigiRequest setHTTPBody:postBody];
+	//setup the connection
+	NSHTTPURLResponse *wigiResponse = [[[NSHTTPURLResponse alloc] init] autorelease];
+	NSError *wigiError = [[[NSError alloc] init] autorelease];
+	NSData * responseData = [[NSData alloc] initWithData: [NSURLConnection sendSynchronousRequest:wigiRequest returningResponse:&wigiResponse error:&wigiError]];
+	
+	NSString *responseString = [[[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding] autorelease];
+	NSLog(@"WIGI RESPONSE: %@", responseString);
+	
 }
 
 @end

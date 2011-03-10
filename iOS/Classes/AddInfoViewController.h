@@ -20,7 +20,8 @@
 	UITextField *itemTags;
 	UITextField *itemComments;
 	UILabel *_headerLabel;
-	
+	WiGiAppDelegate *myAppDelegate;
+
 }
 
 @property (nonatomic, retain) IBOutlet UIButton *cancelButton;
@@ -32,6 +33,7 @@
 @property (nonatomic, retain) IBOutlet UITextField *itemTags;
 @property (nonatomic, retain) IBOutlet UITextField *itemComments;
 @property (nonatomic, retain) IBOutlet UILabel *headerLabel;
+@property (nonatomic, retain) WiGiAppDelegate *myAppDelegate;
 
 -(IBAction) doneEditingDismissKeyboard: (id) sender;
 -(IBAction) cancelItemSubmission: (id) sender;

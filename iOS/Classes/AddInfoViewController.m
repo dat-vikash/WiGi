@@ -12,7 +12,7 @@
 @implementation AddInfoViewController
 
 @synthesize cancelButton, shareWithFriendsSwitch, shareWithFacebookButton, submitButton, itemImageView, itemTags,
-itemComments, headerLabel = _headerLabel, itemImage=_itemImage;
+itemComments, headerLabel = _headerLabel, itemImage=_itemImage, myAppDelegate;
 
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 
@@ -30,6 +30,7 @@ itemComments, headerLabel = _headerLabel, itemImage=_itemImage;
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
 	NSLog(@"in viewdidload addinfo");
+	self.myAppDelegate = (WiGiAppDelegate*) [[UIApplication sharedApplication] delegate];
 	self.itemImageView.image = self.itemImage;
     [super viewDidLoad];
 }
@@ -70,8 +71,8 @@ itemComments, headerLabel = _headerLabel, itemImage=_itemImage;
 
 -(IBAction) submitItem: (id) sender{
 	//get text fields
-	//myappdelegate.submitItemForUser
-	
+	[self.myAppDelegate wigiItemSubmit];
+	 
 }
 
 
@@ -87,6 +88,7 @@ itemComments, headerLabel = _headerLabel, itemImage=_itemImage;
 	[itemTags release];
 	[itemComments release];
 	[_headerLabel release];
+	[self.myAppDelegate release];
 	
     [super dealloc];
 }

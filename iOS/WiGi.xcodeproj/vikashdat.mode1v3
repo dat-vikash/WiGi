@@ -230,6 +230,8 @@
 			<key>Layout</key>
 			<array>
 				<dict>
+					<key>BecomeActive</key>
+					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -278,13 +280,13 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>24</integer>
-									<integer>14</integer>
+									<integer>31</integer>
+									<integer>30</integer>
 									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 105}, {234, 664}}</string>
+							<string>{{0, 124}, {234, 664}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -314,14 +316,12 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>AddInfoViewController.m</string>
+								<string>WiGiAppDelegate.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -329,11 +329,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>AddInfoViewController.m</string>
+										<string>WiGiAppDelegate.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>C0D2F0E41326822900A3805D</string>
+										<string>C0D2F3261329704C00A3805D</string>
 										<key>history</key>
 										<array>
 											<string>C007D988130DA9AB00A2965A</string>
@@ -341,22 +341,24 @@
 											<string>C007DAC01315BA5500A2965A</string>
 											<string>C007DAC51315BA5500A2965A</string>
 											<string>C0D2ED87131D577E00A3805D</string>
-											<string>C0D2EE48131D7B8A00A3805D</string>
 											<string>C0D2EE4E131D7B8A00A3805D</string>
 											<string>C0D2EE4F131D7B8A00A3805D</string>
-											<string>C0D2EE75131E044300A3805D</string>
 											<string>C0D2EE78131E044300A3805D</string>
 											<string>C0D2EEF4132531FC00A3805D</string>
-											<string>C0D2EEF7132531FC00A3805D</string>
-											<string>C0D2F0DB1326822900A3805D</string>
-											<string>C0D2F0DC1326822900A3805D</string>
-											<string>C0D2F0DD1326822900A3805D</string>
-											<string>C0D2F0DE1326822900A3805D</string>
-											<string>C0D2F0DF1326822900A3805D</string>
-											<string>C0D2F0E01326822900A3805D</string>
-											<string>C0D2F0E11326822900A3805D</string>
-											<string>C0D2F0E21326822900A3805D</string>
-											<string>C0D2F0E31326822900A3805D</string>
+											<string>C0D2F3181329704C00A3805D</string>
+											<string>C0D2F3191329704C00A3805D</string>
+											<string>C0D2F31A1329704C00A3805D</string>
+											<string>C0D2F31B1329704C00A3805D</string>
+											<string>C0D2F31C1329704C00A3805D</string>
+											<string>C0D2F31D1329704C00A3805D</string>
+											<string>C0D2F31E1329704C00A3805D</string>
+											<string>C0D2F31F1329704C00A3805D</string>
+											<string>C0D2F3201329704C00A3805D</string>
+											<string>C0D2F3211329704C00A3805D</string>
+											<string>C0D2F3221329704C00A3805D</string>
+											<string>C0D2F3231329704C00A3805D</string>
+											<string>C0D2F3241329704C00A3805D</string>
+											<string>C0D2F3251329704C00A3805D</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -554,6 +556,7 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>C0D2F3271329704C00A3805D</string>
 		<string>C0D2F0021325E0D200A3805D</string>
 		<string>C0D2F0031325E0D200A3805D</string>
 		<string>1CD10A99069EF8BA00B06720</string>
@@ -578,14 +581,12 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>AddInfoViewController.m</string>
+								<string>WiGiMainViewController.m</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -602,6 +603,8 @@
 							<string>218pt</string>
 						</dict>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>

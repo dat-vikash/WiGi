@@ -170,14 +170,19 @@ static NSString* kAppId = @"195151467166916";
 
 -(void) wigiLoginWithFbId: (NSString *) fb_id {
 	//get wigi token
-	NSDictionary *wigiToken = [[self.restClient getWigiAuthorizationForFbId:fb_id withAccessToken:[self.myFacebook accessToken] exprDate: @""] retain];
-	//NSLog(@"khkhjkh%@",[wigiToken valueForKey:@"wigi_token"]);
-	/*store wigi_token and fb_id
-	[[NSUserDefaults standardUserDefaults] setObject:wigiToken forKey:@"wigi_access_token"];
+	NSDictionary *wigiTokens = [[self.restClient getWigiAuthorizationForFbId:fb_id withAccessToken:[self.myFacebook accessToken] exprDate: @""] retain];
+	NSLog(@"khkhjkh%@",[wigiTokens valueForKey:@"wigi_token"]);
+	//store wigi_token and fb_id
+	[[NSUserDefaults standardUserDefaults] setObject:[wigiTokens valueForKey:@"wigi_token"] forKey:@"wigi_access_token"];
 	[[NSUserDefaults standardUserDefaults] setObject:fb_id forKey:@"wigi_facebook_id"];
-	[[NSUserDefaults standardUserDefaults] setObject:fb_id forKey:@"wigi_facebook_id"];
+	[[NSUserDefaults standardUserDefaults] setObject:[wigiTokens valueForKey:@"wigi_id"] forKey:@"wigi_user_id"];
 	[[NSUserDefaults standardUserDefaults] synchronize];
-	[wigiToken release]; */
+	[wigiTokens release]; 
+}
+
+-(void) wigiItemSubmit {
+	[self.restClient submitNewWigiItem:@"item1" forUserWithId:[[NSUserDefaults standardUserDefaults] objectForKey:@"wigi_user_id"] WithFbId:[[NSUserDefaults standardUserDefaults] objectForKey:@"wigi_facebook_id"]  withWigiAccessToken:[[NSUserDefaults standardUserDefaults] objectForKey:@"wigi_access_token"]];
+	
 }
 
 /* Implemented facebook callbacks
@@ -217,6 +222,7 @@ static NSString* kAppId = @"195151467166916";
 	[[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"wigi_facebook_token"];
 	[[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"wigi_facebook_expiration_date"];
 	[[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"wigi_access_token"];
+	[[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"wigi_user_id"];
 	[[NSUserDefaults standardUserDefaults] synchronize];
 	//update login status
 	self.isLoggedIn = TRUE;
