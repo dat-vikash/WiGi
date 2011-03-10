@@ -69,7 +69,8 @@ itemComments, headerLabel = _headerLabel, itemImage=_itemImage;
 
 
 -(IBAction) submitItem: (id) sender{
-	
+	//get text fields
+	//myappdelegate.submitItemForUser
 	
 }
 

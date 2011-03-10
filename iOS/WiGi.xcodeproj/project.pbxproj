@@ -33,6 +33,7 @@
 		C0D2EEAF131E993B00A3805D /* AddItemViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0D2EEAD131E993B00A3805D /* AddItemViewController.xib */; };
 		C0D2EF101325389800A3805D /* AddInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0D2EF0E1325389800A3805D /* AddInfoViewController.m */; };
 		C0D2EF111325389800A3805D /* AddInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0D2EF0F1325389800A3805D /* AddInfoViewController.xib */; };
+		C0D2F116132862A300A3805D /* WiGiRestClient.m in Sources */ = {isa = PBXBuildFile; fileRef = C0D2F115132862A300A3805D /* WiGiRestClient.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -82,6 +83,8 @@
 		C0D2EF0D1325389800A3805D /* AddInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddInfoViewController.h; sourceTree = "<group>"; };
 		C0D2EF0E1325389800A3805D /* AddInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddInfoViewController.m; sourceTree = "<group>"; };
 		C0D2EF0F1325389800A3805D /* AddInfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = AddInfoViewController.xib; path = Classes/AddInfoViewController.xib; sourceTree = "<group>"; };
+		C0D2F114132862A300A3805D /* WiGiRestClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WiGiRestClient.h; sourceTree = "<group>"; };
+		C0D2F115132862A300A3805D /* WiGiRestClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WiGiRestClient.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +114,8 @@
 				C0D2EEAC131E993B00A3805D /* AddItemViewController.m */,
 				C0D2EF0D1325389800A3805D /* AddInfoViewController.h */,
 				C0D2EF0E1325389800A3805D /* AddInfoViewController.m */,
+				C0D2F114132862A300A3805D /* WiGiRestClient.h */,
+				C0D2F115132862A300A3805D /* WiGiRestClient.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -290,6 +295,7 @@
 				C0D2EE5A131DFEB400A3805D /* LoginModalViewController.m in Sources */,
 				C0D2EEAE131E993B00A3805D /* AddItemViewController.m in Sources */,
 				C0D2EF101325389800A3805D /* AddInfoViewController.m in Sources */,
+				C0D2F116132862A300A3805D /* WiGiRestClient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

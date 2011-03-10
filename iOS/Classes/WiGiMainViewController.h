@@ -27,4 +27,5 @@
 @property (nonatomic, retain) WiGiAppDelegate *myAppDelegate;
 
 -(void) refreshView;
+-(void) retrieveFacebookInfoForUser;
 @end

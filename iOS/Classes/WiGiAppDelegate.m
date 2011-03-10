@@ -18,7 +18,7 @@ static NSString* kAppId = @"195151467166916";
 @synthesize window;
 @synthesize wigiTabController;
 
-@synthesize myFacebook = _myFacebook, isLoggedIn = _isLoggedIn, myPermissions = _myPermissions;
+@synthesize myFacebook = _myFacebook, isLoggedIn = _isLoggedIn, myPermissions = _myPermissions, restClient;
 @synthesize HEADER_TEXT;
 
 #pragma mark -
@@ -35,7 +35,8 @@ static NSString* kAppId = @"195151467166916";
 	
 	//set app header
 	self.HEADER_TEXT = @"WANT IT, GET IT";
-	
+	//initialize wigi rest client
+	self.restClient = [[WiGiRestClient alloc] init];
 	//initialize facebook connect
 	self.myFacebook = [[Facebook alloc] initWithAppId:kAppId];
 	//[self facebookLogout];
@@ -167,6 +168,18 @@ static NSString* kAppId = @"195151467166916";
 	[self.myFacebook logout:self];
 }
 
+-(void) wigiLoginWithFbId: (NSString *) fb_id {
+	//get wigi token
+	NSDictionary *wigiToken = [[self.restClient getWigiAuthorizationForFbId:fb_id withAccessToken:[self.myFacebook accessToken] exprDate: @""] retain];
+	//NSLog(@"khkhjkh%@",[wigiToken valueForKey:@"wigi_token"]);
+	/*store wigi_token and fb_id
+	[[NSUserDefaults standardUserDefaults] setObject:wigiToken forKey:@"wigi_access_token"];
+	[[NSUserDefaults standardUserDefaults] setObject:fb_id forKey:@"wigi_facebook_id"];
+	[[NSUserDefaults standardUserDefaults] setObject:fb_id forKey:@"wigi_facebook_id"];
+	[[NSUserDefaults standardUserDefaults] synchronize];
+	[wigiToken release]; */
+}
+
 /* Implemented facebook callbacks
  */
 
@@ -176,13 +189,13 @@ static NSString* kAppId = @"195151467166916";
 - (void)fbDidLogin {
 	NSLog(@"Fb login successful");
 	//update accesstoken and expirDate
+	
 	[[NSUserDefaults standardUserDefaults] setObject:[self.myFacebook accessToken] forKey:@"wigi_facebook_token"];
 	[[NSUserDefaults standardUserDefaults] setObject:[self.myFacebook expirationDate] forKey:@"wigi_facebook_expiration_date"];
 	[[NSUserDefaults standardUserDefaults] synchronize];
 	//update login status
-	self.isLoggedIn = TRUE;
+	self.isLoggedIn = TRUE;	
 	//show wigitabcontroller
-	//[window addSubview:wigiTabController.view];
 	[_modalLogin dismissModalViewControllerAnimated:NO];
 	[window setRootViewController:wigiTabController];
 	[_loginModalRootView release];
@@ -203,6 +216,7 @@ static NSString* kAppId = @"195151467166916";
 	//clear userdefaults
 	[[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"wigi_facebook_token"];
 	[[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"wigi_facebook_expiration_date"];
+	[[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"wigi_access_token"];
 	[[NSUserDefaults standardUserDefaults] synchronize];
 	//update login status
 	self.isLoggedIn = TRUE;

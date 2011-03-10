@@ -138,6 +138,8 @@ myAppDelegate;
 	if ([result isKindOfClass:[NSDictionary class]]) {
 			//set name
 		[self.userNameLabel setText:[result objectForKey:@"name"]];
+		[self.myAppDelegate wigiLoginWithFbId:[result objectForKey:@"id"]];
+		
 		}
 		 NSLog(@"result: %@",result);
 		
