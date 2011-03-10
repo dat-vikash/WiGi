@@ -1,6 +1,7 @@
 import tornado.web
 import os
-from wigi.Handlers.MainHandler import MainHandler, TestHandler
+from wigi.Handlers.MainHandler import MainHandler
+from wigi.Handlers.ItemHandler import ItemHandler
 from wigi.Handlers.LoginHandler import LoginHandler
 from wigi.conf.config import getConfiguration 
 from tornado.options import options, define
@@ -19,7 +20,7 @@ class Application(tornado.web.Application):
         handlers = [
             (r"/", MainHandler),
             (r"/login", LoginHandler),
-            (r"/test", TestHandler),
+            (r"/([0-9]+)/items", ItemHandler),
         ]
         settings = dict(
                         cookie_secret=site_config.get('tornado_settings','cookie_secret'),

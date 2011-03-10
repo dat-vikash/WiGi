@@ -43,10 +43,44 @@ class DBManager(object):
 
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.dialects import mysql #mysql specific
-from sqlalchemy import Column, String, Integer, ForeignKey
+from sqlalchemy import Column, String, Integer, ForeignKey, Enum
 
 #define base object
 Base = declarative_base()
+
+class WigiItems(Base):
+    """ declarative class representing wigi user items. """
+    __tablename__ = 'wigi_items'
+    
+    #define table
+    id = Column(Integer, primary_key=True)
+    user_id = Column(Integer,ForeignKey('users.id'))
+    image_location = Column(String) # location of image on file system
+    status = Column(Enum('want_it','got_it'))
+    initial_comment = Column(String)
+
+    def __init__(self, user, img_loc, status, initial_comment=None):
+        self.user_id = user.id
+	self.image_location = img_loc
+	self.status = status
+        self.initial_comment = initial_comment
+
+    @classmethod
+    def addNewItemForUser(self, user, item, status, initial_comment):
+        """ adds a new item for the specified user. """
+        from wigi import DbMan
+        try:
+            session = DbMan.getSession()
+            session.merge(user)
+            #create new item
+            newItem = WigiItems(user, item, status, initial_comment)
+            session.add(newItem)
+            session.commit()
+            session.close()
+            return newItem if newItem else None
+        except Exception as e:
+            logging.error("Error in WigiItems.addNewItemForUser: " + e.__str__())
+            return None
 
 class WigiTokens(Base):
     """ declarative class representing the wigi secure tokens table. This table allows for mobile devices to securely connect and update

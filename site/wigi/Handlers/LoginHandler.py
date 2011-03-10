@@ -56,14 +56,16 @@ class LoginHandler(BaseHandler, tornado.auth.FacebookGraphMixin):
 		if not userToken:
 		    userToken = WigiTokens.createNewToken(user)
 		#write token to response
-	        self.write(tornado.escape.json_encode({'wigi_token':userToken.wigi_token}))
+	        self.write(tornado.escape.json_encode({'wigi_token':userToken.wigi_token,
+							'wigi_id':user.id}))
 	        self.finish()
             else:
 		#Most likely new access token was given 
 		#create new token for user based on new access token
 		userToken = WigiTokens.createNewToken(user)
 		#write token to response
-	        self.write(tornado.escape.json_encode({'wigi_token':userToken.wigi_token}))
+	        self.write(tornado.escape.json_encode({'wigi_token':userToken.wigi_token,
+							'wigi_id':user.id}))
                 self.finish()
         else:
            print "user doesn't exist"
@@ -89,5 +91,6 @@ class LoginHandler(BaseHandler, tornado.auth.FacebookGraphMixin):
                 #create wigi token
                 userToken = WigiTokens.createNewToken(newUser)
                 print userToken.wigi_token
-                self.write(tornado.escape.json_encode({'wigi_token':userToken.wigi_token}))
+                self.write(tornado.escape.json_encode({'wigi_token':userToken.wigi_token,
+							'wigi_id':newUser.id}))
                 self.finish() 
