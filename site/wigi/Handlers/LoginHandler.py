@@ -11,7 +11,7 @@ site_config = getConfiguration()
 class LoginHandler(BaseHandler, tornado.auth.FacebookGraphMixin):
     @tornado.web.asynchronous
     def get(self):
-        logging.error("loginhandler get: %s" % (self.get_argument("code",False)))
+        logging.info("loginhandler get: %s" % (self.get_argument("code",False)))
        	if self.get_argument("code",False):
                logging.error("got code ")
                self.get_authenticated_user(
@@ -29,7 +29,7 @@ class LoginHandler(BaseHandler, tornado.auth.FacebookGraphMixin):
 
     def _on_login(self, user):
         logging.info("USER INFO:")
-        logging.error(user)
+        logging.info(user)
         self.set_secure_cookie("user", tornado.escape.json_encode(user))
         #self.write("<html><head></head> <body onunload='window.opener.location.reload();'> <script type='text/javascript'> self.close(); </script></body></html>")
         self.redirect("/") 
@@ -50,11 +50,21 @@ class LoginHandler(BaseHandler, tornado.auth.FacebookGraphMixin):
 	    user = User.getUserForFbId(int(self.get_argument("wigi_fb_id")))
 	    if user.access_token == self.get_argument("wigi_accessToken"):
 	        print "user's accesstoken matches"
-        	#if accesstoken matches, create secure wigi token and write to reponse
-                userToken = WigiTokens.createNewToken(user)
-	        self.write(userToken.wigi_token)
+        	#if accesstoken matches, get secure wigi token
+		userToken = WigiTokens.getTokenForUser(user)
+		#if no token exists for user, create one
+		if not userToken:
+		    userToken = WigiTokens.createNewToken(user)
+		#write token to response
+	        self.write(tornado.escape.json_encode({'wigi_token':userToken.wigi_token}))
+	        self.finish()
             else:
-                self.write("access tokens do not match")
+		#Most likely new access token was given 
+		#create new token for user based on new access token
+		userToken = WigiTokens.createNewToken(user)
+		#write token to response
+	        self.write(tornado.escape.json_encode({'wigi_token':userToken.wigi_token}))
+                self.finish()
         else:
            print "user doesn't exist"
 	   #if user doesn't exist, determine if accesstoken is valid and create user, then create wigi token and write to response
@@ -64,14 +74,20 @@ class LoginHandler(BaseHandler, tornado.auth.FacebookGraphMixin):
                                 callback=self.async_callback(self.__is_access_token_valid))
 	   
     def __is_access_token_valid(self,response):
+        from wigi.models.models import User, WigiTokens
         if not response:
             print "here"
 	    #invalid access token
-	    self.finish('invalid access token')
+            self.finish(tornado.escape.json_encode({'error':'Access token invalid'}))
             return
         else:
             #create user and wigi token, write token to response
             #verify user is who they say they are
             if(response.get('id') == self.get_argument('wigi_fb_id')):
 	        print "creating new user id: %s token: %s" %(response.get('id'), self.get_argument('wigi_accessToken'))
-            #newUser = User.createNewUser(int(response['id']), self.accessToken)
+            	newUser = User.createNewUser(int(response.get('id')), self.get_argument('wigi_accessToken'))
+                #create wigi token
+                userToken = WigiTokens.createNewToken(newUser)
+                print userToken.wigi_token
+                self.write(tornado.escape.json_encode({'wigi_token':userToken.wigi_token}))
+                self.finish() 

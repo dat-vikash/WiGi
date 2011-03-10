@@ -1,3 +1,4 @@
+import logging
 
 class DBManager(object):
     """ Manages Database connection. """
@@ -22,7 +23,7 @@ class DBManager(object):
         self.engine = create_engine(self.__connectionString, echo=self.site_config.get('database','echo'), poolclass=QueuePool)
 	
 	#setup session
-     	self.Session = sessionmaker(bind=self.engine)
+     	self.Session = sessionmaker(bind=self.engine, expire_on_commit=False)
         	
     
     def getSession(self):
@@ -65,20 +66,72 @@ class WigiTokens(Base):
         self.wigi_token = hashlib.sha256(user.access_token).hexdigest()
 
     @classmethod
+    def getTokenForUser(self, user):
+        """ Retrieves the current token for a user. If no token is found, return None. """
+	from wigi import DbMan
+ 	try:
+ 	    session = DbMan.getSession()
+            print "04"
+	    user = session.merge(user)
+            print "05"
+	    token = session.query(WigiTokens).filter_by(user_id=user.id).first()
+            print "06"
+            session.close()
+	    return token if token else None
+	except Exception as e:
+	    logging.error("Error in WigiTokens.getTokenForUser: " + e.__str__())
+	    return None
+     
+    @classmethod
+    def clearTokensForUser(self, user):
+        """ clears exisiting tokens for user. """
+	from wigi import DbMan
+	try:
+  	    session = DbMan.getSesssion()
+            user = session.merge(user)
+	    exisitngTokens = session.query(WigiTokens).filter_by(user_id=user.id)
+	    for token in existingTokens:
+	        session.delete(token)
+            session.commit()
+            session.close()
+            return True
+        except Exception as e:
+	    logging.error("Error in WigiTokens.clearTokensForUser: " + e)
+            return False
+	    
+
+    @classmethod
     def createNewToken(self, user):
-        """
+        """ Creates new token for a user. Contraint is that user can only have a single wigi token. If token already exists for user,
+	    delete previous tokens before creation of new token.
         """
         from wigi import DbMan
         try:
             session = DbMan.getSession()
+            print "01"
+            #check if user already has a token
+            user = session.merge(user)
+            print "02"
+            token = WigiTokens.getTokenForUser(user)
+            print "03"
+	    if token:
+	        #token exists for user, delete token
+		if WigiTokens.clearTokensForUser(user):
+		    print "tokens successfully cleared."
+                else:
+		    print "tokens not cleared. "
+	    #create new token for user
 	    token = WigiTokens(user)
+            print "1"
             assert(token.user_id)
             assert(token.wigi_token)
             session.add(token)
             session.commit()
             session.close()
+            print "token created"
             return token
         except Exception as e:
+            print "error creating token: " 
             print e
             return None
       
