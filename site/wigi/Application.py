@@ -29,7 +29,8 @@ class Application(tornado.web.Application):
                         facebook_api_key=options.facebook_api_key,
                         facebook_secret=options.facebook_secret,
                         debug=site_config.get('tornado_settings','debug'),
-                        xsrf_cookies=site_config.get('tornado_settings','xsrf_cookies'),                                
+                        xsrf_cookies=site_config.getboolean('tornado_settings','xsrf_cookies'),                                
         )
         tornado.web.Application.__init__(self, handlers, **settings)
-
+        
+        
