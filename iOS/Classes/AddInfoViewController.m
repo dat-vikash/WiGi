@@ -71,7 +71,8 @@ itemComments, headerLabel = _headerLabel, itemImage=_itemImage, myAppDelegate;
 
 -(IBAction) submitItem: (id) sender{
 	//get text fields
-	[self.myAppDelegate wigiItemSubmit];
+	
+	[self.myAppDelegate wigiItemSubmit:self.itemImage withTag:self.itemTags.text withComment:self.itemComments.text];
 	 
 }
 

@@ -52,7 +52,8 @@ static NSString* wigiBaseURL = @"http://ec2-50-17-86-253.compute-1.amazonaws.com
 	return [[[NSDictionary alloc] initWithDictionary: [responseString JSONValue] ] autorelease];
 }
 
--(void) submitNewWigiItem: (id) item forUserWithId: (NSString*) wigi_id WithFbId: (NSString *) fb_id withWigiAccessToken: (NSString *) access_token{
+-(void) submitNewWigiItem: (UIImage*) item forUserWithId: (NSString*) wigi_id WithFbId: (NSString *) fb_id withWigiAccessToken: (NSString *) access_token  withComment: (NSString*) comment withTag: (NSString*) tag;
+{
 	NSLog(@"in submitNewWigiItem");
 	//setup url
 	NSURL *wigiURL = [[NSURL alloc] initWithString:[NSString stringWithFormat:@"%@%@/items",wigiBaseURL,wigi_id]];
@@ -86,6 +87,20 @@ static NSString* wigiBaseURL = @"http://ec2-50-17-86-253.compute-1.amazonaws.com
 	[postBody appendData:[[NSString stringWithFormat:@"%@\r\n", fb_id] dataUsingEncoding:NSUTF8StringEncoding]];
 	
 	//image
+	[postBody appendData:[boundarySeparator dataUsingEncoding:NSUTF8StringEncoding]]; 
+	[postBody appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"; filename=\"%@\"\r\n", @"wigi_item_image",@"item.jpg"] dataUsingEncoding:NSUTF8StringEncoding]];
+	[postBody appendData:[[NSString stringWithFormat:@"Content-Type: application/octet-stream\r\n\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+	[postBody appendData:[NSData dataWithData:UIImageJPEGRepresentation(item, 1.0)]];
+	
+	//tag
+	[postBody appendData:[boundarySeparator dataUsingEncoding:NSUTF8StringEncoding]]; 
+	[postBody appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n", @"wigi_item_tag"] dataUsingEncoding:NSUTF8StringEncoding]];
+	[postBody appendData:[[NSString stringWithFormat:@"%@\r\n", tag] dataUsingEncoding:NSUTF8StringEncoding]];
+	
+	//comment
+	[postBody appendData:[boundarySeparator dataUsingEncoding:NSUTF8StringEncoding]]; 
+	[postBody appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n", @"wigi_item_comment"] dataUsingEncoding:NSUTF8StringEncoding]];
+	[postBody appendData:[[NSString stringWithFormat:@"%@\r\n", comment] dataUsingEncoding:NSUTF8StringEncoding]];
 	
 	//end post data
 	[postBody appendData:[[NSString stringWithFormat:@"\r\n--%@--\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];

@@ -180,8 +180,9 @@ static NSString* kAppId = @"195151467166916";
 	[wigiTokens release]; 
 }
 
--(void) wigiItemSubmit {
-	[self.restClient submitNewWigiItem:@"item1" forUserWithId:[[NSUserDefaults standardUserDefaults] objectForKey:@"wigi_user_id"] WithFbId:[[NSUserDefaults standardUserDefaults] objectForKey:@"wigi_facebook_id"]  withWigiAccessToken:[[NSUserDefaults standardUserDefaults] objectForKey:@"wigi_access_token"]];
+-(void) wigiItemSubmit: (UIImage*) item withTag: (NSString*) tag withComment: (NSString *) comment{
+	[self.restClient submitNewWigiItem:item forUserWithId:[[NSUserDefaults standardUserDefaults] objectForKey:@"wigi_user_id"] WithFbId:[[NSUserDefaults standardUserDefaults] objectForKey:@"wigi_facebook_id"]  withWigiAccessToken:[[NSUserDefaults standardUserDefaults] objectForKey:@"wigi_access_token"]
+						   withComment: comment withTag:tag];
 	
 }
 

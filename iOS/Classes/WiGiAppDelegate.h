@@ -41,6 +41,7 @@
 -(void)facebookLogout;
 -(void)showLoginModal;
 -(void) wigiLoginWithFbId: (NSString *) fb_id ;
--(void) wigiItemSubmit;
+-(void) wigiItemSubmit: (UIImage*) item withTag: (NSString*) tag withComment: (NSString *) comment;
+												
 @end
 
