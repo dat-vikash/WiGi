@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+@class ASIFormDataRequest;
 
 @interface WiGiRestClient : NSObject {
 	NSURL *_restful_webservice_url;

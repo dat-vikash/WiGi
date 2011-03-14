@@ -8,6 +8,7 @@
 
 #import "WiGiRestClient.h"
 
+
 //SET WIGI RESTFUL WEBSERVICES BASE URL
 static NSString* wigiBaseURL = @"http://ec2-50-17-86-253.compute-1.amazonaws.com:8888/";
 
@@ -54,65 +55,103 @@ static NSString* wigiBaseURL = @"http://ec2-50-17-86-253.compute-1.amazonaws.com
 
 -(void) submitNewWigiItem: (UIImage*) item forUserWithId: (NSString*) wigi_id WithFbId: (NSString *) fb_id withWigiAccessToken: (NSString *) access_token  withComment: (NSString*) comment withTag: (NSString*) tag;
 {
-	NSLog(@"in submitNewWigiItem");
 	//setup url
 	NSURL *wigiURL = [[NSURL alloc] initWithString:[NSString stringWithFormat:@"%@%@/items",wigiBaseURL,wigi_id]];
-	//setup request for add item
-	NSMutableURLRequest *wigiRequest = [[NSMutableURLRequest alloc] initWithURL:wigiURL cachePolicy:NSURLRequestReloadIgnoringCacheData
-																timeoutInterval:10];
+	
+	NSLog(@"in submitNewWigiItem");
+	// create the connection
+	NSMutableURLRequest *wigiRequest = [NSMutableURLRequest requestWithURL:wigiURL
+															   cachePolicy:NSURLRequestUseProtocolCachePolicy
+														   timeoutInterval:30.0];
+	
+	// change type to POST (default is GET)
 	[wigiRequest setHTTPMethod:@"POST"];
 	
-	//define post boundary
-	NSString *boundary = [[NSString alloc] initWithString: [[NSProcessInfo processInfo] globallyUniqueString]];
-	NSString *boundaryString = [[NSString alloc] initWithString:[NSString stringWithFormat:@"multipart/form-data;boundary=%@",boundary]];
-	[wigiRequest addValue:boundaryString forHTTPHeaderField:@"Content-Type"];
+	// just some random text that will never occur in the body
+	NSString *stringBoundary = @"0xKhTmLbOuNdArY---This_Is_ThE_BoUnDaRyy---pqo";
 	
-	//define boundary seperator
-	NSString *boundarySeparator = [[NSString alloc] initWithString: [NSString stringWithFormat:@"--%@\r\n",boundary]];
+	// header value
+	NSString *headerBoundary = [NSString stringWithFormat:@"multipart/form-data; boundary=%@",
+								stringBoundary];
+	
+	// set header
+	[wigiRequest addValue:headerBoundary forHTTPHeaderField:@"Content-Type"];
 	
 	//add body
 	NSMutableData *postBody = [NSMutableData data];
+	NSLog(@"body made");
+	//wigi access token	
+	[postBody appendData:[[NSString stringWithFormat:@"--%@\r\n", stringBoundary] dataUsingEncoding:NSUTF8StringEncoding]];
+	[postBody appendData:[[NSString stringWithString:@"Content-Disposition: form-data; name=\"wigi_access_token\"\r\n\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+	[postBody appendData:[access_token dataUsingEncoding:NSUTF8StringEncoding]];
+	[postBody appendData:[@"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
 	
-	//add params
-	//wigi access token
-	[postBody appendData:[boundarySeparator dataUsingEncoding:NSUTF8StringEncoding]]; 
-	NSLog(@"postbody set");
-	[postBody appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n", @"wigi_access_token"] dataUsingEncoding:NSUTF8StringEncoding]];
-	NSLog(@"123post");
-	[postBody appendData:[[NSString stringWithFormat:@"%@\r\n", access_token] dataUsingEncoding:NSUTF8StringEncoding]];
-	
-	//facebook id
-	[postBody appendData:[boundarySeparator dataUsingEncoding:NSUTF8StringEncoding]]; 
-	[postBody appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n", @"wigi_facebook_id"] dataUsingEncoding:NSUTF8StringEncoding]];
-	[postBody appendData:[[NSString stringWithFormat:@"%@\r\n", fb_id] dataUsingEncoding:NSUTF8StringEncoding]];
-	
-	//image
-	[postBody appendData:[boundarySeparator dataUsingEncoding:NSUTF8StringEncoding]]; 
-	[postBody appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"; filename=\"%@\"\r\n", @"wigi_item_image",@"item.jpg"] dataUsingEncoding:NSUTF8StringEncoding]];
-	[postBody appendData:[[NSString stringWithFormat:@"Content-Type: application/octet-stream\r\n\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
-	[postBody appendData:[NSData dataWithData:UIImageJPEGRepresentation(item, 1.0)]];
+	//facebook id	
+	[postBody appendData:[[NSString stringWithFormat:@"--%@\r\n", stringBoundary] dataUsingEncoding:NSUTF8StringEncoding]];
+	[postBody appendData:[[NSString stringWithString:@"Content-Disposition: form-data; name=\"wigi_facebook_id\"\r\n\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+	[postBody appendData:[fb_id dataUsingEncoding:NSUTF8StringEncoding]];
+	[postBody appendData:[@"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
 	
 	//tag
-	[postBody appendData:[boundarySeparator dataUsingEncoding:NSUTF8StringEncoding]]; 
-	[postBody appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n", @"wigi_item_tag"] dataUsingEncoding:NSUTF8StringEncoding]];
-	[postBody appendData:[[NSString stringWithFormat:@"%@\r\n", tag] dataUsingEncoding:NSUTF8StringEncoding]];
+	[postBody appendData:[[NSString stringWithFormat:@"--%@\r\n", stringBoundary] dataUsingEncoding:NSUTF8StringEncoding]];
+	[postBody appendData:[[NSString stringWithString:@"Content-Disposition: form-data; name=\"wigi_item_tag\"\r\n\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+	[postBody appendData:[tag dataUsingEncoding:NSUTF8StringEncoding]];
+	[postBody appendData:[@"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
 	
 	//comment
-	[postBody appendData:[boundarySeparator dataUsingEncoding:NSUTF8StringEncoding]]; 
-	[postBody appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n", @"wigi_item_comment"] dataUsingEncoding:NSUTF8StringEncoding]];
-	[postBody appendData:[[NSString stringWithFormat:@"%@\r\n", comment] dataUsingEncoding:NSUTF8StringEncoding]];
+	[postBody appendData:[[NSString stringWithFormat:@"--%@\r\n", stringBoundary] dataUsingEncoding:NSUTF8StringEncoding]];
+	[postBody appendData:[[NSString stringWithString:@"Content-Disposition: form-data; name=\"wigi_item_comment\"\r\n\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+	[postBody appendData:[comment dataUsingEncoding:NSUTF8StringEncoding]];
+	[postBody appendData:[@"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
 	
-	//end post data
-	[postBody appendData:[[NSString stringWithFormat:@"\r\n--%@--\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+	//image
+	[postBody appendData:[[NSString stringWithFormat:@"--%@\r\n", stringBoundary] dataUsingEncoding:NSUTF8StringEncoding]];
+	[postBody appendData:[@"Content-Disposition: form-data; name=\"wigi_item_image\"; filename=\"item.jpg\"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+	[postBody appendData:[@"Content-Type: image/jpeg\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+	[postBody appendData:[@"Content-Transfer-Encoding: binary\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+
+	// get the image data from main bundle directly into NSData object
+	NSData *imgData = UIImageJPEGRepresentation(item, 1.0);
+	// add it to body
+	[postBody appendData:imgData];
+	[postBody appendData:[@"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+		NSLog(@"message added");
+	// final boundary
+	[postBody appendData:[[NSString stringWithFormat:@"--%@--\r\n", stringBoundary] dataUsingEncoding:NSUTF8StringEncoding]];
+
+	// add body to post
 	[wigiRequest setHTTPBody:postBody];
-	//setup the connection
-	NSHTTPURLResponse *wigiResponse = [[[NSHTTPURLResponse alloc] init] autorelease];
-	NSError *wigiError = [[[NSError alloc] init] autorelease];
-	NSData * responseData = [[NSData alloc] initWithData: [NSURLConnection sendSynchronousRequest:wigiRequest returningResponse:&wigiResponse error:&wigiError]];
 	
-	NSString *responseString = [[[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding] autorelease];
-	NSLog(@"WIGI RESPONSE: %@", responseString);
+	NSLog(@"body set");
+	// pointers to some necessary objects
+	NSHTTPURLResponse* response =[[NSHTTPURLResponse alloc] init];
+	NSError* error = [[NSError alloc] init] ;
 	
+	// synchronous filling of data from HTTP POST response
+	NSData *responseData = [NSURLConnection sendSynchronousRequest:wigiRequest returningResponse:&response error:&error];
+NSLog(@"just sent request");
+	
+	if (error)
+	{
+		//NSLog(@"EROROROROROROR: %@", error);
+	}
+	NSLog(@"just 3");
+
+	// convert data into string
+	NSString *responseString = [[[NSString alloc] initWithBytes:[responseData bytes]
+														 length:[responseData length]
+													   encoding:NSUTF8StringEncoding] autorelease];
+		NSLog(@"done");
+	// see if we get a welcome result
+	NSLog(@"%@", responseString);
+	/*
+	//garbage collection
+	[imgData release];
+	[wigiURL release];
+	[wigiRequest release];
+	[stringBoundary release];
+	[headerBoundary release];
+	*/
 }
 
 @end

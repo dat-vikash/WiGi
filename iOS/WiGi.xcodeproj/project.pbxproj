@@ -34,6 +34,10 @@
 		C0D2EF101325389800A3805D /* AddInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0D2EF0E1325389800A3805D /* AddInfoViewController.m */; };
 		C0D2EF111325389800A3805D /* AddInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0D2EF0F1325389800A3805D /* AddInfoViewController.xib */; };
 		C0D2F116132862A300A3805D /* WiGiRestClient.m in Sources */ = {isa = PBXBuildFile; fileRef = C0D2F115132862A300A3805D /* WiGiRestClient.m */; };
+		C0D2F46C132B01E800A3805D /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0D2F46B132B01E800A3805D /* CFNetwork.framework */; };
+		C0D2F46E132B01F900A3805D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0D2F46D132B01F900A3805D /* SystemConfiguration.framework */; };
+		C0D2F470132B020400A3805D /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0D2F46F132B020400A3805D /* MobileCoreServices.framework */; };
+		C0D2F472132B022600A3805D /* libz.1.2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C0D2F471132B022600A3805D /* libz.1.2.3.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -85,6 +89,10 @@
 		C0D2EF0F1325389800A3805D /* AddInfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = AddInfoViewController.xib; path = Classes/AddInfoViewController.xib; sourceTree = "<group>"; };
 		C0D2F114132862A300A3805D /* WiGiRestClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WiGiRestClient.h; sourceTree = "<group>"; };
 		C0D2F115132862A300A3805D /* WiGiRestClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WiGiRestClient.m; sourceTree = "<group>"; };
+		C0D2F46B132B01E800A3805D /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		C0D2F46D132B01F900A3805D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		C0D2F46F132B020400A3805D /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		C0D2F471132B022600A3805D /* libz.1.2.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.3.dylib; path = usr/lib/libz.1.2.3.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +103,10 @@
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
+				C0D2F46C132B01E800A3805D /* CFNetwork.framework in Frameworks */,
+				C0D2F46E132B01F900A3805D /* SystemConfiguration.framework in Frameworks */,
+				C0D2F470132B020400A3805D /* MobileCoreServices.framework in Frameworks */,
+				C0D2F472132B022600A3805D /* libz.1.2.3.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -114,8 +126,8 @@
 				C0D2EEAC131E993B00A3805D /* AddItemViewController.m */,
 				C0D2EF0D1325389800A3805D /* AddInfoViewController.h */,
 				C0D2EF0E1325389800A3805D /* AddInfoViewController.m */,
-				C0D2F114132862A300A3805D /* WiGiRestClient.h */,
 				C0D2F115132862A300A3805D /* WiGiRestClient.m */,
+				C0D2F114132862A300A3805D /* WiGiRestClient.h */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -137,6 +149,10 @@
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
+				C0D2F46B132B01E800A3805D /* CFNetwork.framework */,
+				C0D2F46D132B01F900A3805D /* SystemConfiguration.framework */,
+				C0D2F46F132B020400A3805D /* MobileCoreServices.framework */,
+				C0D2F471132B022600A3805D /* libz.1.2.3.dylib */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
