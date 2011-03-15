@@ -14,6 +14,7 @@ define("facebook_api_key", help="your Facebook application API key",
        default=site_config.get('wigi','facebook_api_key'))
 define("facebook_secret", help="your Facebook application secret",
        default=site_config.get('wigi','facebook_secret'))
+define("media_dir", default="media/", help="location of media directory relative to project.")
 
 class Application(tornado.web.Application):
     def __init__(self):

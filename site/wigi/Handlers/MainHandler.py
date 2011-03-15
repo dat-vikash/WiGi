@@ -25,6 +25,8 @@ class MainHandler(BaseHandler,tornado.auth.FacebookGraphMixin):
     def __on_user_info_get(self, userInfo):
         print userInfo
 	#update user info
+        print "Asdfasfasfas"
+        print self.current_user
 	self.current_user['name']=userInfo['name']
         self.render("index.html", login_status='true')
 

@@ -48,6 +48,49 @@ from sqlalchemy import Column, String, Integer, ForeignKey, Enum
 #define base object
 Base = declarative_base()
 
+class ItemComments(Base):
+    """ declarative class representing wigi user item comments. """
+    __tablename__ = 'wigi_item_comments'
+
+    #define table
+    id = Column(Integer, primary_key=True)
+    item_id = Column(Integer, ForeignKey('wigi_items.id'))
+    comment = Column(String)
+
+    def __init__(self, item, comment):
+        self.item_id = item.id
+        self.comment = comment
+
+
+class ItemTags(Base):
+    """ declarative class representing wigi user item tags. """
+    __tablename__ = 'wigi_item_tags'
+
+    #define table
+    id = Column(Integer, primary_key=True)
+    item_id = Column(Integer, ForeignKey('wigi_items.id'))
+    tag = Column(String)
+
+    def __init__(self, item, tag):
+        self.item_id = item.id
+        self.tag = tag
+    
+    @classmethod
+    def addTagForItem(self,item,tag):
+        from wigi import DbMan
+        try:
+            session = DbMan.getSession()
+            session.merge(item)
+            #create tag for item
+            newTag = ItemTags(item, tag)
+            session.add(newTag)
+            session.commit()
+            session.close()
+            return newTag if newTag else None
+        except Exception as e:
+            logging.error("Error in ItemTags.addTagForItem: " + e.__str__())
+            return None
+
 class WigiItems(Base):
     """ declarative class representing wigi user items. """
     __tablename__ = 'wigi_items'
@@ -59,21 +102,21 @@ class WigiItems(Base):
     status = Column(Enum('want_it','got_it'))
     initial_comment = Column(String)
 
-    def __init__(self, user, img_loc, status, initial_comment=None):
+    def __init__(self, user, item_loc, status, initial_comment=None):
         self.user_id = user.id
-	self.image_location = img_loc
+	self.image_location = item_loc
 	self.status = status
         self.initial_comment = initial_comment
 
     @classmethod
-    def addNewItemForUser(self, user, item, status, initial_comment):
+    def addNewItemForUser(self, user, item_loc, status, initial_comment):
         """ adds a new item for the specified user. """
         from wigi import DbMan
         try:
             session = DbMan.getSession()
             session.merge(user)
             #create new item
-            newItem = WigiItems(user, item, status, initial_comment)
+            newItem = WigiItems(user, item_loc, status, initial_comment)
             session.add(newItem)
             session.commit()
             session.close()
@@ -81,6 +124,22 @@ class WigiItems(Base):
         except Exception as e:
             logging.error("Error in WigiItems.addNewItemForUser: " + e.__str__())
             return None
+
+    @classmethod
+    def getItemsForUser(self, user):
+        """ Retrieves a users items based off the user.id column. """
+        from wigi import DbMan
+	try:
+	    session = DbMan.getSession()
+	    session.merge(user)
+	    #get items for user
+	    items = session.query(WigiItems).filter_by(user_id=user.id).all()
+	    session.close()
+	    return items if items else None
+	except Exception as e:
+	    logging.error("Error in WigiItems.getItemsForUser: " + e.__str__())
+	    return None
+
 
 class WigiTokens(Base):
     """ declarative class representing the wigi secure tokens table. This table allows for mobile devices to securely connect and update
@@ -198,6 +257,19 @@ class User(Base):
             print e
             return False
 
+    @classmethod
+    def getUserById(self, user_id):
+	""" returns the user corresponding to the supplied facebook id. """
+        from wigi import DbMan
+        try:
+            session = DbMan.getSession()
+            user = session.query(User).filter_by(id=user_id).first()
+	    session.close()
+            return user if user else None
+	except Exception as e:
+	    print e
+            return None 
+   
     @classmethod
     def getUserForFbId(self, fb_id):
 	""" returns the user corresponding to the supplied facebook id. """
