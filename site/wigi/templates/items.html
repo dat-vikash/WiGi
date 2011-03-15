@@ -1,0 +1,10 @@
+<html>
+<head>
+</head>
+<body>
+<ul>
+ {% for item in items %}
+     <li> <img src="/static/{{ escape (item) }}"/> </li>
+ {% end %}
+</body>
+</html>
