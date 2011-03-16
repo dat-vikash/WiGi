@@ -6,7 +6,8 @@ required_modules = [
 	"sqlalchemy >=0.6.1",
 	"tornado>=1.1.1",	
 	"pycurl",
-        "pil>=1.1.6"
+        "pil>=1.1.6",
+	"MySQL-python",
 ]
 
 setup(

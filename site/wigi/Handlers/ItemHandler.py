@@ -19,9 +19,10 @@ class ItemHandler(BaseHandler):
         user = User.getUserById(user_id)
 	items = WigiItems.getItemsForUser(user)
 	itemMetas = []
-       	for item in items:
-	    itemMetas.append({'item_image_url':"http://ec2-50-17-86-253.compute-1.amazonaws.com:8888/static/" +  item.image_location,
-			      'item_comments':item.initial_comment})
+        if items:
+            for item in items:
+                itemMetas.append({'item_image_url':"http://ec2-50-17-86-253.compute-1.amazonaws.com:8888/static/" +  item.image_location,
+		    	          'item_comments':item.initial_comment})
 	self.write(tornado.escape.json_encode(itemMetas))
 	self.finish()
 	

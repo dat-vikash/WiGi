@@ -1,8 +1,5 @@
 print "Starting wigi server"
-from wigi.models.models import DBManager, User
+from wigi.models.models import DBManager, User,ItemComments, ItemTags, WigiItems, WigiTokens, Base
 #create a DBManger instance
 DbMan = DBManager()
 
-#for dev purposes
-#create in memory db
-User.metadata.create_all(DbMan.engine)

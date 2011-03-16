@@ -19,7 +19,9 @@ class DBManager(object):
         print "in dbmanager init"
 	#get configuration data
 	self.site_config = getConfiguration()
-        self.__connectionString = 'sqlite:///:memory:';
+        #self.__connectionString = 'sqlite:///:memory:';
+        self.__connectionString = "%s%s:%s@%s/%s" % (self.site_config.get('database','driver'), self.site_config.get('database','username'), self.site_config.get('database','password'),
+							self.site_config.get('database','host'),self.site_config.get('database','dbname'))
         self.engine = create_engine(self.__connectionString, echo=self.site_config.get('database','echo'), poolclass=QueuePool)
 	
 	#setup session
