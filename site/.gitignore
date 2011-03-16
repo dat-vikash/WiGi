@@ -1,5 +1,6 @@
 build
 dist
+media
 wigi.egg-info
 *.pyc
 
