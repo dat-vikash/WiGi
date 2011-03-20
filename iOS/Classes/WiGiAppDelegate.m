@@ -18,7 +18,7 @@ static NSString* kAppId = @"195151467166916";
 @synthesize window;
 @synthesize wigiTabController;
 
-@synthesize myFacebook = _myFacebook, isLoggedIn = _isLoggedIn, myPermissions = _myPermissions, restClient;
+@synthesize myFacebook = _myFacebook, isLoggedIn = _isLoggedIn, myPermissions = _myPermissions, restClient, connectionBuffers;
 @synthesize HEADER_TEXT;
 
 #pragma mark -
@@ -32,7 +32,7 @@ static NSString* kAppId = @"195151467166916";
 		exit(1);
 		return nil;
 	}
-	
+	self.connectionBuffers = [[NSMutableDictionary alloc] init];
 	//set app header
 	self.HEADER_TEXT = @"WANT IT, GET IT";
 	//initialize wigi rest client
@@ -170,20 +170,22 @@ static NSString* kAppId = @"195151467166916";
 
 -(void) wigiLoginWithFbId: (NSString *) fb_id {
 	//get wigi token
-	NSDictionary *wigiTokens = [[self.restClient getWigiAuthorizationForFbId:fb_id withAccessToken:[self.myFacebook accessToken] exprDate: @""] retain];
-	NSLog(@"khkhjkh%@",[wigiTokens valueForKey:@"wigi_token"]);
-	//store wigi_token and fb_id
-	[[NSUserDefaults standardUserDefaults] setObject:[wigiTokens valueForKey:@"wigi_token"] forKey:@"wigi_access_token"];
+	[self.restClient getWigiAuthorizationForFbId:fb_id withAccessToken:[self.myFacebook accessToken] exprDate: @""];
+	//store fb_id	
 	[[NSUserDefaults standardUserDefaults] setObject:fb_id forKey:@"wigi_facebook_id"];
-	[[NSUserDefaults standardUserDefaults] setObject:[wigiTokens valueForKey:@"wigi_id"] forKey:@"wigi_user_id"];
 	[[NSUserDefaults standardUserDefaults] synchronize];
-	[wigiTokens release]; 
+	NSLog(@"wigi loging started");
 }
 
 -(void) wigiItemSubmit: (UIImage*) item withTag: (NSString*) tag withComment: (NSString *) comment{
 	[self.restClient submitNewWigiItem:item forUserWithId:[[NSUserDefaults standardUserDefaults] objectForKey:@"wigi_user_id"] WithFbId:[[NSUserDefaults standardUserDefaults] objectForKey:@"wigi_facebook_id"]  withWigiAccessToken:[[NSUserDefaults standardUserDefaults] objectForKey:@"wigi_access_token"]
 						   withComment: comment withTag:tag];
+	[self.wigiTabController setSelectedIndex:0];
 	
+}
+
+-(void) retrieveWigiItems{
+	[self.restClient getWigiItemsForUserWithId:[[NSUserDefaults standardUserDefaults] objectForKey:@"wigi_user_id"] withWigiAccessToken:[[NSUserDefaults standardUserDefaults] objectForKey:@"wigi_access_token"]];
 }
 
 /* Implemented facebook callbacks
@@ -230,11 +232,63 @@ static NSString* kAppId = @"195151467166916";
 	 
 }
 
+//nsurlconnection delegate implementations
+-(void) connection: (NSURLConnection*) connection didReceiveData: (NSData *) data {
+	NSString *key = [((SNSURLConnection*) connection).connInfo objectForKey:@"uniqueId"];
+	[[self.connectionBuffers objectForKey:key]  appendData:data];
+}
+
+-(void) connectionDidFinishLoading:(NSURLConnection *)connection {
+	//connection finished loading, get unique key for connection and complete data set
+	//then remove unique connection id from buffer list
+	NSString *key = [[((SNSURLConnection*) connection).connInfo objectForKey:@"uniqueId"] retain];
+	NSData *rawData = [[self.connectionBuffers objectForKey:key] retain];
+	[self.connectionBuffers removeObjectForKey:key];
+	//determine which method the connection was created for
+	NSRange loginMatch = [key rangeOfString:@"wigi_login"];
+	NSRange itemRetrievalMatch = [key rangeOfString:@"wigi_items_get"];
+	
+	//create response string from raw data
+	NSString *responseString = [[NSString alloc] initWithData:rawData encoding:NSUTF8StringEncoding];
+			
+	if (loginMatch.location != NSNotFound) {
+		//wigi login response
+		NSDictionary * wigiTokens =  [responseString JSONValue];
+		//set wigi login params
+		NSLog(@"login response");
+		[[NSUserDefaults standardUserDefaults] setObject:[wigiTokens valueForKey:@"wigi_token"] forKey:@"wigi_access_token"];
+		[[NSUserDefaults standardUserDefaults] setObject:[wigiTokens valueForKey:@"wigi_id"] forKey:@"wigi_user_id"];
+		[[NSUserDefaults standardUserDefaults] synchronize];
+		[[NSNotificationCenter defaultCenter] postNotificationName:@"facebookLoginComplete" object:nil];
+	}
+	if (itemRetrievalMatch.location != NSNotFound) {
+		NSLog(@"item response");
+		//wigi item retrieval response
+		NSArray *wigiItems = [NSArray arrayWithArray: [responseString JSONValue]];
+		NSLog(@"about to set wigiitems: %@", wigiItems);
+		NSDictionary *userInfo = [NSDictionary dictionaryWithObject:wigiItems forKey:@"items"];
+		[[NSNotificationCenter defaultCenter] postNotificationName:@"wigiItemUpdate" object:self userInfo:userInfo];
+		NSLog(@"wigiLists reloaded");
+		//[userInfo release];
+		//[wigiItems release];
+		
+	}
+		
+	
+	
+	
+	[key release];
+	[rawData release];
+	[responseString release];
+			
+	
+}
 
 
 
 - (void)dealloc {
-
+	
+	[self.restClient release];
     [self.window release];
 	[self.wigiTabController release];
 	[_myFacebook release];
@@ -242,6 +296,7 @@ static NSString* kAppId = @"195151467166916";
 	[self.HEADER_TEXT release];
 	[_loginModalRootView release];
 	[_modalLogin release];
+	[self.connectionBuffers release];
 	[super dealloc];
 }
 

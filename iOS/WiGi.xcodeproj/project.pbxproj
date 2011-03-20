@@ -38,6 +38,7 @@
 		C0D2F46E132B01F900A3805D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0D2F46D132B01F900A3805D /* SystemConfiguration.framework */; };
 		C0D2F470132B020400A3805D /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0D2F46F132B020400A3805D /* MobileCoreServices.framework */; };
 		C0D2F472132B022600A3805D /* libz.1.2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C0D2F471132B022600A3805D /* libz.1.2.3.dylib */; };
+		C0D2F6E11331A74300A3805D /* SNSURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = C0D2F6E01331A74300A3805D /* SNSURLConnection.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -93,6 +94,8 @@
 		C0D2F46D132B01F900A3805D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		C0D2F46F132B020400A3805D /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		C0D2F471132B022600A3805D /* libz.1.2.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.3.dylib; path = usr/lib/libz.1.2.3.dylib; sourceTree = SDKROOT; };
+		C0D2F6DF1331A74300A3805D /* SNSURLConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNSURLConnection.h; sourceTree = "<group>"; };
+		C0D2F6E01331A74300A3805D /* SNSURLConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNSURLConnection.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +131,8 @@
 				C0D2EF0E1325389800A3805D /* AddInfoViewController.m */,
 				C0D2F115132862A300A3805D /* WiGiRestClient.m */,
 				C0D2F114132862A300A3805D /* WiGiRestClient.h */,
+				C0D2F6DF1331A74300A3805D /* SNSURLConnection.h */,
+				C0D2F6E01331A74300A3805D /* SNSURLConnection.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -312,6 +317,7 @@
 				C0D2EEAE131E993B00A3805D /* AddItemViewController.m in Sources */,
 				C0D2EF101325389800A3805D /* AddInfoViewController.m in Sources */,
 				C0D2F116132862A300A3805D /* WiGiRestClient.m in Sources */,
+				C0D2F6E11331A74300A3805D /* SNSURLConnection.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

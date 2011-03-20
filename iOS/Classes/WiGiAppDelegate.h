@@ -10,6 +10,7 @@
 #import "LoginModalViewController.h"
 #import "Facebook.h"
 #import "WiGiRestClient.h"
+#import "WiGiMainViewController.h"
 
 @interface WiGiAppDelegate : NSObject <FBSessionDelegate,UIApplicationDelegate> {
     //window and tabbar instance
@@ -24,7 +25,8 @@
 	Facebook *_myFacebook;
 	NSArray *_myPermissions;
 	BOOL _isLoggedIn;
-
+	//rest client variables
+	NSMutableDictionary *connectionBuffers;
 	
 	
 }
@@ -36,12 +38,13 @@
 @property(nonatomic, retain) Facebook *myFacebook;
 @property (nonatomic, retain) NSArray *myPermissions;
 @property (nonatomic) BOOL isLoggedIn;
+@property (nonatomic, retain) NSMutableDictionary *connectionBuffers;
 
 -(void)facebookLogin;
 -(void)facebookLogout;
 -(void)showLoginModal;
 -(void) wigiLoginWithFbId: (NSString *) fb_id ;
 -(void) wigiItemSubmit: (UIImage*) item withTag: (NSString*) tag withComment: (NSString *) comment;
-												
+-(void) retrieveWigiItems;												
 @end
 

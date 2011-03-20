@@ -73,7 +73,7 @@ itemComments, headerLabel = _headerLabel, itemImage=_itemImage, myAppDelegate;
 	//get text fields
 	
 	[self.myAppDelegate wigiItemSubmit:self.itemImage withTag:self.itemTags.text withComment:self.itemComments.text];
-	 
+	[self dismissModalViewControllerAnimated:YES];
 }
 
 

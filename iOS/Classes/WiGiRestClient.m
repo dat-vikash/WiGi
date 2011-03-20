@@ -7,22 +7,24 @@
 //
 
 #import "WiGiRestClient.h"
-
+#import "WiGiAppDelegate.h"
 
 //SET WIGI RESTFUL WEBSERVICES BASE URL
 static NSString* wigiBaseURL = @"http://ec2-50-17-86-253.compute-1.amazonaws.com:8888/";
 
 
 @implementation WiGiRestClient
-@synthesize wigiRestUrl = _restful_webservice_url;
+@synthesize wigiRestUrl = _restful_webservice_url, myAppDelegate;
 
 
--(NSDictionary*) getWigiAuthorizationForFbId: (NSString *) fb_id withAccessToken: (NSString *) access_token 
+-(void) getWigiAuthorizationForFbId: (NSString *) fb_id withAccessToken: (NSString *) access_token 
 								 exprDate: (NSString *) expr_date {
 	//RESTful post to wigi login service
 	//parameters are facebook_id,  facebook access_token, and expiration date. This will return a JSON 
 	//response containing a wigi access token to allow user data manipulation
 	NSLog(@"in rest client");
+	//get delegate
+	self.myAppDelegate = (WiGiAppDelegate*) [[UIApplication sharedApplication] delegate];
 	//initialize wigi url path to authorization
 	NSURL *wigiURL = [[NSURL alloc] initWithString:[NSString stringWithFormat:@"%@login",wigiBaseURL]];
 	//setup wigi request for authorization
@@ -36,21 +38,30 @@ static NSString* wigiBaseURL = @"http://ec2-50-17-86-253.compute-1.amazonaws.com
 	NSString *len = [[NSString alloc] initWithString:[NSString stringWithFormat:@"%d", [postData length]]];
 	[wigiRequest setValue:len forHTTPHeaderField:@"Content-Length"];
 	[wigiRequest setHTTPBody:[postData dataUsingEncoding:NSASCIIStringEncoding]];
-	NSHTTPURLResponse *wigiResponse = [[[NSHTTPURLResponse alloc] init] autorelease];
-	NSError *wigiError = [[[NSError alloc] init] autorelease];
+	SNSURLConnection *conn = [[SNSURLConnection alloc] initWithRequest:wigiRequest delegate:myAppDelegate startImmediately:NO];
+	//generate unique id for connection
+	NSString *uniqueId = [[NSProcessInfo processInfo] globallyUniqueString];
+	uniqueId = [uniqueId stringByAppendingString:@"wigi_login"];
+	NSDictionary *connInfo = [NSDictionary dictionaryWithObjectsAndKeys:uniqueId,@"uniqueId",nil];
+	NSLog(@"conninfo: %@", connInfo);
+	//create empty data buffer for connection
+	[self.myAppDelegate.connectionBuffers setObject: [NSMutableData dataWithCapacity: 0] forKey:uniqueId];
+	NSLog(@"databuffer:%@", self.myAppDelegate.connectionBuffers ); 
+	conn.connInfo = connInfo;
+	[conn scheduleInRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
+	[conn start];
 	
-	NSData * responseData = [[NSData alloc] initWithData: [NSURLConnection sendSynchronousRequest:wigiRequest returningResponse:&wigiResponse error:&wigiError]];
-	NSString *responseString = [[[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding] autorelease];
-	NSLog(@"WIGI RESPONSE: %@", responseString);
-
+	NSLog(@"login request sent");
 	//release objects
+	[conn release];
+	[uniqueId release];
 	[wigiURL release];
 	[wigiRequest release];
 	[postData release];
-	[len release];
-	[responseData release];
+	[len release] ;
+	[self.myAppDelegate release];
 		
-	return [[[NSDictionary alloc] initWithDictionary: [responseString JSONValue] ] autorelease];
+	//return [[[NSDictionary alloc] initWithDictionary: [responseString JSONValue] ] autorelease];
 }
 
 -(void) submitNewWigiItem: (UIImage*) item forUserWithId: (NSString*) wigi_id WithFbId: (NSString *) fb_id withWigiAccessToken: (NSString *) access_token  withComment: (NSString*) comment withTag: (NSString*) tag;
@@ -153,5 +164,48 @@ NSLog(@"just sent request");
 	[headerBoundary release];
 	*/
 }
+
+
+-(void) getWigiItemsForUserWithId: (NSString*) wigi_id withWigiAccessToken: (NSString *) access_token {
+	NSLog(@"in get items");
+	//get delegate
+	self.myAppDelegate = (WiGiAppDelegate*) [[UIApplication sharedApplication] delegate];
+	//setup url
+	NSURL *wigiURL = [[NSURL alloc] initWithString:[NSString stringWithFormat:@"%@%@/items?access_token=%@",wigiBaseURL,wigi_id,access_token]];
+	//setup wigi request for authorization
+	NSMutableURLRequest *wigiRequest = [[NSMutableURLRequest alloc] initWithURL:wigiURL cachePolicy:NSURLRequestReloadIgnoringCacheData
+																timeoutInterval:10];
+	
+	//create connection
+	SNSURLConnection *conn = [[SNSURLConnection alloc] initWithRequest:wigiRequest delegate:myAppDelegate startImmediately:NO];
+	//generate unique id for connection
+	NSString *uniqueId = [[NSProcessInfo processInfo] globallyUniqueString];
+	uniqueId = [uniqueId stringByAppendingString:@"wigi_items_get"];
+	NSDictionary *connInfo = [NSDictionary dictionaryWithObjectsAndKeys:uniqueId,@"uniqueId",nil];
+	NSLog(@"conninfo: %@", connInfo);
+	//create empty data buffer for connection
+	[self.myAppDelegate.connectionBuffers setObject: [NSMutableData dataWithCapacity: 0] forKey:uniqueId];
+	NSLog(@"databuffer:%@", self.myAppDelegate.connectionBuffers ); 
+	conn.connInfo = connInfo;
+	[conn scheduleInRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
+	[conn start];
+	
+	NSLog(@"sent request for items");	
+	[conn release];
+	//[connInfo release];
+	[uniqueId release];
+	[wigiRequest release];
+	[wigiURL release];
+	[self.myAppDelegate release];
+	
+	
+	
+}
+
+
+
+
+
+
 
 @end

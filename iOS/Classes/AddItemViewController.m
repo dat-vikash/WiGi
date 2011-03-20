@@ -99,7 +99,7 @@
 	addItemViewController.itemImage = self.selectedItem;
 	[self presentModalViewController:addItemViewController animated:YES];
 	[addItemViewController release];
-	//result item flag
+	//reset item flag
 	self.userHasSelectedItem = FALSE;
 }
 
